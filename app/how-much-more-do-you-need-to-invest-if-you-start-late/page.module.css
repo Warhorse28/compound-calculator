@@ -1,0 +1,456 @@
+.pageShell {
+  min-height: 100vh;
+  padding: 40px 16px 72px;
+  background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 45%, #f3f7fc 100%);
+}
+
+.articleCard {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 36px;
+  border: 1px solid rgba(37, 99, 235, 0.08);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  color: #334155;
+  font-family: Inter, Arial, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.heroSection {
+  margin-bottom: 8px;
+}
+
+.contentSection {
+  margin-top: 30px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.title {
+  margin: 0 0 18px;
+  color: #0f172a;
+  font-size: 38px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.lead {
+  margin: 0 0 18px;
+  color: #334155;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.paragraph {
+  margin: 0 0 18px;
+  color: #334155;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.sectionTitle {
+  margin: 0 0 12px;
+  color: #0f172a;
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.questionTitle {
+  margin: 26px 0 10px;
+  color: #111827;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.faqItem:first-of-type .questionTitle {
+  margin-top: 4px;
+}
+
+.callout {
+  margin: 22px 0;
+  padding: 18px 20px;
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #eff6ff 0%, #f8fbff 100%);
+  color: #1e3a8a;
+  line-height: 1.7;
+}
+
+.heroActions {
+  margin-top: 16px;
+  margin-bottom: 28px;
+}
+
+.heroButton,
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+  cursor: pointer;
+}
+
+.heroButton {
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.28);
+}
+
+.heroButton:hover,
+.ctaButton:hover,
+.relatedCard:hover {
+  transform: translateY(-1px);
+}
+
+.heroButton:hover,
+.ctaButton:hover {
+  box-shadow: 0 16px 30px rgba(37, 99, 235, 0.32);
+}
+
+.tocBox {
+  margin-bottom: 28px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #f8fafc;
+}
+
+.tocTitle {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tocList {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.95;
+}
+
+.tocLink {
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tocLink:hover,
+.inlineLink:hover,
+.bottomCtaLink:hover {
+  text-decoration: underline;
+}
+
+.list {
+  margin: 0 0 20px 22px;
+  padding: 0;
+  color: #334155;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.tableWrap {
+  margin: 16px 0 20px;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.table {
+  width: 100%;
+  min-width: 960px;
+  border-collapse: collapse;
+}
+
+.tableCaption {
+  padding: 14px 16px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+  caption-side: top;
+  border-bottom: 1px solid #dbeafe;
+}
+
+.tableHead {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tableCell,
+.tableCellStrong {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 15px;
+  line-height: 1.7;
+  vertical-align: top;
+}
+
+.tableCell {
+  color: #334155;
+}
+
+.tableCellStrong {
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.noteBox {
+  margin: 18px 0 22px;
+  padding: 20px;
+  border: 1px solid #bfdbfe;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #eff6ff 0%, #f8fbff 100%);
+}
+
+.noteTitle {
+  margin: 0 0 8px;
+  color: #1d4ed8;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.noteText {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.ctaBox {
+  margin: 28px 0;
+  padding: 24px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #0f172a 0%, #172554 100%);
+  color: #ffffff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+
+.ctaTitle {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.ctaText {
+  margin: 0 0 16px;
+  color: #cbd5e1;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.ctaButton {
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
+}
+
+.relatedSection {
+  margin: 28px 0 10px;
+}
+
+.relatedHeading {
+  margin: 0 0 18px;
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.relatedCard {
+  display: block;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #f8fafc;
+  text-decoration: none;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.relatedCard:hover {
+  border-color: #93c5fd;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.relatedLabel {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.relatedTitle {
+  display: block;
+  margin-bottom: 10px;
+  color: #0f172a;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.relatedText {
+  display: block;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.inlineLink {
+  color: #1d4ed8;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bottomCta {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.bottomCtaText {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.bottomCtaLink {
+  color: #2563eb;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.heroButton:focus-visible,
+.ctaButton:focus-visible,
+.tocLink:focus-visible,
+.inlineLink:focus-visible,
+.bottomCtaLink:focus-visible,
+.relatedCard:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .articleCard {
+    padding: 28px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .pageShell {
+    padding: 24px 12px 48px;
+  }
+
+  .articleCard {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 30px;
+    line-height: 1.16;
+  }
+
+  .lead {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .questionTitle {
+    font-size: 20px;
+  }
+
+  .heroButton,
+  .ctaButton {
+    width: 100%;
+  }
+
+  .ctaBox {
+    padding: 20px;
+  }
+
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tocBox,
+  .callout,
+  .noteBox {
+    padding: 18px 16px;
+  }
+
+  .table {
+    min-width: 780px;
+  }
+}

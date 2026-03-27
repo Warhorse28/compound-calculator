@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import CompoundCalculator from "./components/CompoundCalculator";
 
 export const metadata: Metadata = {
-  title: "Free Compound Interest Calculator with Monthly Contributions",
+  title: "Compound Interest Calculator (Free & Easy)| Investment Growth Tool",
   description:
-    "Estimate investment growth with this free compound interest calculator. Add monthly contributions, test scenarios, and project your future balance instantly.",
+    "Use this free compound interest calculator to estimate your investment growth. Calculate returns with monthly contributions and see how your money grows over time.",
 };
 
 export default function Home() {
