@@ -3,8 +3,7 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://scalemonthly.com";
 
-  const pages = [
-    // HOME + CORE
+  const routes = [
     "",
     "/compound-interest-calculator",
     "/how-much-net-worth-to-retire",
@@ -12,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/safe-withdrawal-rate-for-retirement",
     "/how-to-calculate-net-worth-needed-for-retirement",
 
-    // PHASE 2 — NET WORTH NEEDED
     "/net-worth-needed-to-retire-with-3000-a-month",
     "/net-worth-needed-to-retire-with-4000-a-month",
     "/net-worth-needed-to-retire-with-5000-a-month",
@@ -31,7 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/net-worth-needed-to-retire-with-50000-a-month",
     "/net-worth-needed-to-retire-with-60000-a-month",
 
-    // PHASE 3 — NET WORTH → INCOME
     "/what-net-worth-generates-10000-a-month",
     "/what-net-worth-generates-20000-a-month",
     "/what-net-worth-generates-30000-a-month",
@@ -39,13 +36,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/how-much-income-can-1-million-generate",
     "/how-much-income-can-5-million-generate",
 
-    // PHASE 4 — RETIREMENT (IS)
     "/is-2000-a-month-enough-to-retire",
     "/is-3000-a-month-enough-to-retire",
+    "/is-4000-a-month-enough-to-retire",
+    "/is-5000-a-month-enough-to-retire",
+    "/is-6000-a-month-enough-to-retire",
   ];
 
-  return pages.map((path) => ({
-    url: `${baseUrl}${path}`,
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
     lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: route === "" ? 1 : 0.8,
   }));
 }
