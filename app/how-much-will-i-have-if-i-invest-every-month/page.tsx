@@ -2,173 +2,102 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
 
-const siteUrl = "https://yoursite.com";
-const pagePath = "/how-much-will-i-have-if-i-invest-every-month";
-const calculatorPath = "/calculator";
-
-const pageTitle =
-  "How Much Will I Have If I Invest Every Month? See How Your Balance Can Grow";
-
-const pageDescription =
-  "See how much you could have if you invest every month. Compare timelines, monthly amounts, and realistic growth scenarios with a simple calculator.";
-
 export const metadata: Metadata = {
-  title: pageTitle,
-  description: pageDescription,
-  alternates: {
-    canonical: `${siteUrl}${pagePath}`,
-  },
-  openGraph: {
-    title: pageTitle,
-    description: pageDescription,
-    url: `${siteUrl}${pagePath}`,
-    siteName: "Your Site",
-    type: "article",
-  },
+  title:
+    "How Much Will I Have If I Invest Every Month? Examples, Growth, and What Matters Most",
+  description:
+    "See how much monthly investing could grow over time, compare real examples, and understand why time and consistency often matter more than chasing return.",
 };
-
-const faqItems = [
-  {
-    question: "How much will I have if I invest every month?",
-    answer:
-      "It depends on your monthly amount, timeline, and return rate. Even moderate monthly investing can build a much larger balance over time when compounding has enough years to work.",
-  },
-  {
-    question: "Does investing every month make a big difference?",
-    answer:
-      "Yes. Regular monthly investing can steadily build your balance, especially over long timelines. The combination of consistency and compounding is what makes the difference.",
-  },
-  {
-    question: "Is it better to invest monthly or wait until later?",
-    answer:
-      "Starting earlier is often more powerful because your money gets more time to compound. Waiting may require much larger contributions later to reach a similar result.",
-  },
-  {
-    question: "What matters most in monthly investing?",
-    answer:
-      "The biggest factors are usually your monthly contribution, the number of years invested, and the return rate. Time is especially important because it gives compounding more chances to build.",
-  },
-];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How much will I have if I invest every month?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "It depends on your monthly contribution, your time horizon, and your average return. A calculator gives the fastest estimate for your own scenario.",
+      },
     },
-  })),
+    {
+      "@type": "Question",
+      name: "Is a small monthly investment worth it?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Over time, even small monthly investments can grow meaningfully because each new contribution has a chance to compound.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What matters more: time or return?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Both matter, but time is often more powerful than people expect. A longer timeline can create a much larger balance even without unusually high returns.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why does investing every month work well for many people?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Monthly investing works well because it builds consistency, adds fresh capital regularly, and gives each contribution time to compound.",
+      },
+    },
+  ],
 };
-
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: pageTitle,
-  description: pageDescription,
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": `${siteUrl}${pagePath}`,
-  },
-  author: {
-    "@type": "Organization",
-    name: "Your Site",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Your Site",
-  },
-};
-
-const comparisonRows = [
-  {
-    monthlyAmount: "$200",
-    years: "10 years",
-    annualReturn: "8%",
-    estimatedBalance: "~$36,000",
-    takeaway: "Small monthly amount, short timeline.",
-  },
-  {
-    monthlyAmount: "$300",
-    years: "20 years",
-    annualReturn: "8%",
-    estimatedBalance: "~$177,000",
-    takeaway: "Longer time creates a much bigger result.",
-  },
-  {
-    monthlyAmount: "$500",
-    years: "30 years",
-    annualReturn: "8%",
-    estimatedBalance: "~$745,000",
-    takeaway: "Consistency plus time can build serious capital.",
-  },
-];
-
-const relatedGuides = [
-  {
-    href: "/how-to-calculate-compound-interest",
-    label: "Guide",
-    title: "How to Calculate Compound Interest",
-    text: "Understand the formula behind long-term growth and why time matters so much.",
-  },
-  {
-    href: "/how-much-difference-does-10-years-make-in-investing",
-    label: "Comparison",
-    title: "How Much Difference Does 10 Years Make in Investing?",
-    text: "See how a 10-year difference can dramatically change the final balance.",
-  },
-  {
-    href: "/investing-early-vs-late-how-big-is-the-difference",
-    label: "Timing",
-    title: "Investing Early vs Late: How Big Is the Difference?",
-    text: "Compare what happens when the same contribution starts earlier or later.",
-  },
-];
 
 export default function Page() {
   return (
-    <main className={styles.pageShell}>
+    <main className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
 
-      <article className={styles.articleCard}>
-        <header className={styles.heroSection}>
-          <div className={styles.eyebrow}>Monthly investing</div>
+      <article className={styles.article}>
+        <header className={styles.hero}>
+          <span className={styles.eyebrow}>MONTHLY INVESTING GUIDE</span>
 
           <h1 className={styles.title}>
-            How Much Will I Have If I Invest Every Month? See How Your Balance
-            Can Grow
+            How Much Will I Have If I Invest Every Month?
           </h1>
 
           <p className={styles.lead}>
-            Monthly investing can build far more than many people expect. The
-            reason is simple: every contribution adds new money, and
-            compounding gives that money more chances to keep growing.
+            Monthly investing can build more than many people expect. The final
+            number is not driven only by how much you contribute. It is also shaped
+            by how long your money stays invested and how much time compounding has
+            to work.
           </p>
 
-          <p className={styles.lead}>
-            That is why even a moderate monthly amount can turn into a much
-            larger balance over time. The key variables are your contribution,
-            your timeline, and how long compounding has to work.
+          <p className={styles.intro}>
+            This guide walks through realistic examples, explains why monthly
+            investing works, and shows why consistency and time often matter more
+            than trying to find a perfect return or entry point.
           </p>
 
-          <div className={styles.callout} role="note" aria-label="Key insight">
-            <strong>Key insight:</strong> monthly investing is powerful because
-            consistency adds new deposits while time allows those deposits and
-            gains to keep compounding.
+          <div className={styles.highlight} role="note" aria-label="Key takeaway">
+            <p className={styles.highlightLabel}>Key takeaway</p>
+            <p className={styles.highlightText}>
+              In most realistic scenarios, extending your timeline by a few years
+              can change the final balance more than chasing a slightly higher rate
+              of return.
+            </p>
           </div>
 
           <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.heroButton}>
-              See How Your Monthly Investing Could Grow →
+            <Link
+              href="/compound-interest-calculator"
+              className={styles.primaryCta}
+            >
+              Use the compound interest calculator
+            </Link>
+            <Link
+              href="/how-to-calculate-compound-interest"
+              className={styles.secondaryLink}
+            >
+              Learn the compound interest formula
             </Link>
           </div>
         </header>
@@ -177,23 +106,23 @@ export default function Page() {
           <p className={styles.tocTitle}>On this page</p>
           <ul className={styles.tocList}>
             <li>
-              <a href="#why-monthly-investing-works" className={styles.tocLink}>
-                Why monthly investing works
-              </a>
-            </li>
-            <li>
-              <a href="#monthly-investing-examples" className={styles.tocLink}>
+              <a href="#examples" className={styles.tocLink}>
                 Monthly investing examples
               </a>
             </li>
             <li>
-              <a href="#what-changes-your-result" className={styles.tocLink}>
-                What changes your result
+              <a href="#why-it-works" className={styles.tocLink}>
+                Why investing every month works
               </a>
             </li>
             <li>
-              <a href="#how-to-think-about-it" className={styles.tocLink}>
-                How to think about it clearly
+              <a href="#what-matters-most" className={styles.tocLink}>
+                What matters most in the final result
+              </a>
+            </li>
+            <li>
+              <a href="#why-the-question-matters" className={styles.tocLink}>
+                Why this question matters
               </a>
             </li>
             <li>
@@ -204,259 +133,271 @@ export default function Page() {
           </ul>
         </nav>
 
-        <section
-          id="why-monthly-investing-works"
-          className={styles.contentSection}
-        >
-          <h2 className={styles.sectionTitle}>
-            Why investing every month can grow your balance so much
+        <section id="examples" className={styles.section} aria-labelledby="examples-title">
+          <h2 id="examples-title" className={styles.sectionTitle}>
+            Monthly investing examples
           </h2>
 
           <p className={styles.paragraph}>
-            Monthly investing works because it combines two advantages. First,
-            you keep adding fresh money on a regular basis. Second, older
-            contributions keep getting more time to compound.
-          </p>
-
-          <p className={styles.paragraph}>
-            That means the result is not only about how much you put in. It is
-            also about how long each deposit stays invested. Earlier deposits
-            often become some of the most important parts of the final balance.
-          </p>
-
-          <ul className={styles.list}>
-            <li>monthly deposits build consistency</li>
-            <li>older deposits usually grow the longest</li>
-            <li>time gives compounding more chances to work</li>
-            <li>small amounts can become meaningful over long periods</li>
-          </ul>
-        </section>
-
-        <section
-          id="monthly-investing-examples"
-          className={styles.contentSection}
-        >
-          <h2 className={styles.sectionTitle}>
-            Monthly investing examples with simple numbers
-          </h2>
-
-          <p className={styles.paragraph}>
-            To make this easier to picture, here are a few example scenarios
-            using regular monthly contributions and an assumed{" "}
-            <strong>8% annual return</strong>.
+            These simplified examples assume a 7% average annual return over 20
+            years with regular monthly contributions:
           </p>
 
           <div className={styles.tableWrap}>
             <table className={styles.table}>
-              <caption className={styles.tableCaption}>
-                Example monthly investing scenarios with different amounts and
-                timelines.
-              </caption>
               <thead>
                 <tr>
-                  <th className={styles.tableHead}>Monthly amount</th>
-                  <th className={styles.tableHead}>Years invested</th>
-                  <th className={styles.tableHead}>Annual return</th>
-                  <th className={styles.tableHead}>Estimated balance</th>
-                  <th className={styles.tableHead}>What stands out</th>
+                  <th className={styles.tableHead}>Monthly investment</th>
+                  <th className={styles.tableHead}>Estimated balance after 20 years</th>
                 </tr>
               </thead>
               <tbody>
-                {comparisonRows.map((row) => (
-                  <tr key={`${row.monthlyAmount}-${row.years}`}>
-                    <td className={styles.tableCellStrong}>
-                      {row.monthlyAmount}
-                    </td>
-                    <td className={styles.tableCell}>{row.years}</td>
-                    <td className={styles.tableCell}>{row.annualReturn}</td>
-                    <td className={styles.tableCellStrong}>
-                      {row.estimatedBalance}
-                    </td>
-                    <td className={styles.tableCell}>{row.takeaway}</td>
-                  </tr>
-                ))}
+                <tr>
+                  <td className={styles.tableCell}>$100/month</td>
+                  <td className={styles.tableCell}>about $52,000</td>
+                </tr>
+                <tr>
+                  <td className={styles.tableCell}>$300/month</td>
+                  <td className={styles.tableCell}>about $156,000</td>
+                </tr>
+                <tr>
+                  <td className={styles.tableCell}>$500/month</td>
+                  <td className={styles.tableCell}>about $260,000</td>
+                </tr>
               </tbody>
             </table>
           </div>
 
           <p className={styles.paragraph}>
-            The biggest difference usually comes from time. A longer investing
-            window often changes the final balance far more than people expect,
-            even when the monthly contribution does not look huge at first.
+            The pattern matters more than the exact rounded number. Growth is not
+            driven only by deposits. It accelerates because each contribution has a
+            chance to earn returns, and later returns are applied to a balance that
+            has already grown.
+          </p>
+
+          <div className={styles.tipBox}>
+            <p className={styles.tipTitle}>What the table really shows</p>
+            <p className={styles.tipText}>
+              Monthly investing is not just about adding money. It is about giving
+              each contribution enough time to start participating in compound
+              growth.
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="why-it-works"
+          className={styles.section}
+          aria-labelledby="why-it-works-title"
+        >
+          <h2 id="why-it-works-title" className={styles.sectionTitle}>
+            Why investing every month works
+          </h2>
+
+          <ul className={styles.list}>
+            <li>It builds consistency without requiring perfect timing.</li>
+            <li>It keeps adding fresh capital to the account regularly.</li>
+            <li>It gives every new contribution a chance to compound.</li>
+            <li>It works even if you start with a small amount.</li>
+          </ul>
+
+          <p className={styles.paragraph}>
+            This is one reason monthly investing feels more practical for many
+            people than waiting to invest a large lump sum later. It turns the
+            process into a repeatable habit instead of a one-time decision.
           </p>
 
           <div className={styles.noteBox}>
-            <p className={styles.noteTitle}>What these examples really show</p>
+            <p className={styles.noteTitle}>What people often underestimate</p>
             <p className={styles.noteText}>
-              The monthly amount matters, but time often does more work than
-              people realize. Regular investing becomes much more powerful when
-              it has many years to build.
+              Many people focus only on return. In real long-term investing,
+              contribution discipline and time are often the stronger drivers of
+              the final result.
             </p>
           </div>
         </section>
 
         <section
-          id="what-changes-your-result"
-          className={styles.contentSection}
+          id="what-matters-most"
+          className={styles.section}
+          aria-labelledby="what-matters-most-title"
         >
-          <h2 className={styles.sectionTitle}>
-            What changes how much you could have
+          <h2 id="what-matters-most-title" className={styles.sectionTitle}>
+            What matters most in the final result
           </h2>
 
           <p className={styles.paragraph}>
-            Three variables usually matter most: how much you invest each
-            month, how many years you stay invested, and the return rate you
-            assume. Of those three, time is often the most underestimated.
-          </p>
-
-          <p className={styles.paragraph}>
-            A higher monthly amount can help. A better return can help too. But
-            when time gets shorter, your balance often has less room to grow.
-            That is why starting earlier usually reduces pressure later.
+            If you are trying to estimate how much you could have, three variables
+            usually matter most:
           </p>
 
           <ul className={styles.list}>
-            <li>larger monthly deposits can accelerate growth</li>
-            <li>longer timelines usually have the biggest impact</li>
-            <li>return assumptions matter, but time still drives compounding</li>
-            <li>starting early can make the path much easier</li>
+            <li>your monthly contribution amount</li>
+            <li>your investment timeline</li>
+            <li>your average rate of return</li>
           </ul>
+
+          <p className={styles.paragraph}>
+            Most people expect return to be the main factor. In practice, time
+            often does more work than they realize. A longer timeline gives your
+            contributions and gains more chances to build on each other.
+          </p>
+
+          <p className={styles.paragraph}>
+            That is why an ordinary return sustained for many years can still
+            produce a meaningful balance. The math is less about a lucky number and
+            more about repeated contributions plus time.
+          </p>
         </section>
 
         <section
-          id="how-to-think-about-it"
-          className={styles.contentSection}
+          id="why-the-question-matters"
+          className={styles.section}
+          aria-labelledby="why-the-question-matters-title"
         >
-          <h2 className={styles.sectionTitle}>
-            How to think about monthly investing more clearly
+          <h2 id="why-the-question-matters-title" className={styles.sectionTitle}>
+            Why this question matters
           </h2>
 
           <p className={styles.paragraph}>
-            The useful question is not only “How much will I have?” It is also
-            “What can I control from here?” You can change your monthly amount,
-            your timeline, and the assumptions you test in the calculator.
+            This question is not just about curiosity. It is about planning. Once
+            you have a rough estimate of what monthly investing could become, it is
+            easier to decide whether you should increase your contribution, extend
+            your timeline, or adjust your expectations.
           </p>
 
           <p className={styles.paragraph}>
-            If you want to understand the formula behind the growth, read our{" "}
-            <Link
-              href="/how-to-calculate-compound-interest"
-              className={styles.inlineLink}
-            >
-              compound interest guide
-            </Link>
-            . If you want to compare what happens when time changes, explore{" "}
-            <Link
-              href="/how-much-difference-does-10-years-make-in-investing"
-              className={styles.inlineLink}
-            >
-              the 10-year investing difference
-            </Link>
-            . If you want to compare starting earlier versus later, read{" "}
-            <Link
-              href="/investing-early-vs-late-how-big-is-the-difference"
-              className={styles.inlineLink}
-            >
-              investing early vs late
-            </Link>
-            .
+            A calculator is especially useful here because it lets you test
+            different monthly amounts and timeframes quickly instead of relying on a
+            vague guess.
           </p>
+        </section>
 
+        <section className={styles.ctaSection} aria-labelledby="cta-title">
           <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
-              Test your monthly investing scenario
+            <h2 id="cta-title" className={styles.ctaTitle}>
+              Test your own monthly investing scenario
             </h2>
             <p className={styles.ctaText}>
-              Change the monthly amount, timeline, and return to see how your
-              balance could grow with your own numbers.
+              Change the monthly amount, timeline, starting balance, and return
+              assumptions to see how your future balance could change.
             </p>
-            <Link href={calculatorPath} className={styles.ctaButton}>
-              Test Your Numbers in the Calculator →
+            <Link
+              href="/compound-interest-calculator"
+              className={styles.ctaButton}
+            >
+              Calculate your investment growth
             </Link>
           </div>
         </section>
 
-        <section
-          className={styles.relatedSection}
-          aria-labelledby="related-guides"
-        >
-          <h2 id="related-guides" className={styles.relatedHeading}>
-            Related guides
-          </h2>
-
-          <div className={styles.relatedGrid}>
-            {relatedGuides.map((guide) => (
-              <Link
-                key={guide.href}
-                href={guide.href}
-                className={styles.relatedCard}
-              >
-                <span className={styles.relatedLabel}>{guide.label}</span>
-                <strong className={styles.relatedTitle}>{guide.title}</strong>
-                <span className={styles.relatedText}>{guide.text}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section
-          id="faq"
-          className={styles.contentSection}
-          aria-labelledby="faq-heading"
-        >
-          <h2 id="faq-heading" className={styles.sectionTitle}>
+        <section className={styles.section} aria-labelledby="faq-title">
+          <h2 id="faq-title" className={styles.sectionTitle}>
             Frequently asked questions
           </h2>
 
-          {faqItems.map((item) => (
-            <div key={item.question} className={styles.faqItem}>
-              <h3 className={styles.questionTitle}>{item.question}</h3>
-              <p className={styles.paragraph}>{item.answer}</p>
-            </div>
-          ))}
+          <h3 className={styles.questionTitle}>
+            How much will I have if I invest every month?
+          </h3>
+          <p className={styles.paragraph}>
+            It depends on your monthly contribution, your timeline, and your
+            average return. A calculator gives the fastest estimate for your own
+            scenario.
+          </p>
+
+          <h3 className={styles.questionTitle}>
+            Is a small monthly investment worth it?
+          </h3>
+          <p className={styles.paragraph}>
+            Yes. Over time, even small monthly amounts can grow meaningfully
+            because each contribution has a chance to compound.
+          </p>
+
+          <h3 className={styles.questionTitle}>
+            What matters more: time or return?
+          </h3>
+          <p className={styles.paragraph}>
+            Both matter, but time is often more powerful than people expect. A
+            longer timeline can create a much larger balance even without unusually
+            high returns.
+          </p>
+
+          <h3 className={styles.questionTitle}>
+            Why does monthly investing work well for many people?
+          </h3>
+          <p className={styles.paragraph}>
+            It builds consistency, keeps adding new capital, and allows each
+            contribution to participate in compound growth over time.
+          </p>
         </section>
 
-        <section
-          className={styles.contentSection}
-          aria-labelledby="final-takeaway"
-        >
-          <h2 id="final-takeaway" className={styles.sectionTitle}>
-            Final takeaway
-          </h2>
+        <section className={styles.section} aria-labelledby="related-guides-title">
+          <div className={styles.sectionHeader}>
+            <h2 id="related-guides-title" className={styles.sectionTitle}>
+              Related guides
+            </h2>
+            <p className={styles.relatedIntro}>
+              Explore the next pages that help you understand the math, the
+              timeline, and the return side of the equation.
+            </p>
+          </div>
 
-          <p className={styles.paragraph}>
-            How much will you have if you invest every month? Often far more
-            than people expect, especially when the timeline is long. Monthly
-            investing works because consistency adds new money while time gives
-            compounding more chances to build.
-          </p>
-
-          <p className={styles.paragraph}>
-            If you want to compare timing more directly, read{" "}
-            <Link
-              href="/how-much-difference-does-10-years-make-in-investing"
-              className={styles.inlineLink}
-            >
-              how much 10 years changes the result
-            </Link>
-            . If you want to understand the formula behind the growth, explore{" "}
+          <nav className={styles.relatedGrid} aria-label="Related guides">
             <Link
               href="/how-to-calculate-compound-interest"
-              className={styles.inlineLink}
+              className={styles.relatedCard}
             >
-              compound interest math
+              <span className={styles.relatedLabel}>Guide</span>
+              <strong className={styles.relatedTitle}>
+                How to Calculate Compound Interest
+              </strong>
+              <span className={styles.relatedText}>
+                Understand the formula and see why recurring contributions change
+                the math.
+              </span>
             </Link>
-            .
-          </p>
 
-          <div className={styles.bottomCta}>
-            <p className={styles.bottomCtaText}>
-              Want to see how much your monthly investing could build?
-            </p>
-            <Link href={calculatorPath} className={styles.bottomCtaLink}>
-              Compare your scenario with your own numbers →
+            <Link
+              href="/how-long-does-it-take-to-double-your-money"
+              className={styles.relatedCard}
+            >
+              <span className={styles.relatedLabel}>Time</span>
+              <strong className={styles.relatedTitle}>
+                How Long Does It Take to Double Your Money?
+              </strong>
+              <span className={styles.relatedText}>
+                Turn return assumptions into a rough timeline and compare growth
+                speed.
+              </span>
             </Link>
-          </div>
+
+            <Link
+              href="/what-interest-rate-do-i-need-to-reach-my-investment-goal"
+              className={styles.relatedCard}
+            >
+              <span className={styles.relatedLabel}>Planning</span>
+              <strong className={styles.relatedTitle}>
+                What Interest Rate Do I Need to Reach My Investment Goal?
+              </strong>
+              <span className={styles.relatedText}>
+                See how return, time, and contribution size work together when you
+                plan toward a target.
+              </span>
+            </Link>
+          </nav>
+        </section>
+
+        <section className={styles.bottomCta}>
+          <p className={styles.bottomCtaText}>
+            Want to test different monthly amounts and timeframes with your own
+            numbers?
+          </p>
+          <Link
+            href="/compound-interest-calculator"
+            className={styles.bottomCtaLink}
+          >
+            Use the compound interest calculator
+          </Link>
         </section>
       </article>
     </main>

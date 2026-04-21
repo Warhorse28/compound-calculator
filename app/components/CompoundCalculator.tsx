@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState, type CSSProperties } from "react";
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import styles from "./CompoundCalculator.module.css";
 
 function formatCurrency(value: number) {
   return value.toLocaleString("en-US", {
@@ -8,6 +10,10 @@ function formatCurrency(value: number) {
     currency: "USD",
     maximumFractionDigits: 2,
   });
+}
+
+function formatPercent(value: number) {
+  return `${value.toFixed(2)}%`;
 }
 
 function cleanDecimalInput(value: string) {
@@ -20,7 +26,6 @@ function cleanDecimalInput(value: string) {
       result += char;
       continue;
     }
-
     if (char === "." && !hasDot) {
       result += char;
       hasDot = true;
@@ -59,14 +64,49 @@ function calculateCompoundInterest({
 
   const totalInvested =
     initialInvestment + monthlyContribution * investmentMonths;
-
   const interestEarned = finalAmount - totalInvested;
+  const years = investmentMonths / 12;
+  const monthlyIncomeAt4Percent = (finalAmount * 0.04) / 12;
+  const totalReturnPercent =
+    totalInvested > 0 ? (interestEarned / totalInvested) * 100 : 0;
 
   return {
     finalAmount,
     totalInvested,
     interestEarned,
+    years,
+    monthlyIncomeAt4Percent,
+    totalReturnPercent,
   };
+}
+
+function getProjectionMessage(monthlyIncome: number) {
+  if (monthlyIncome < 2000) {
+    return "This is a start, but for most households it would still be a fairly lean retirement income.";
+  }
+  if (monthlyIncome < 4000) {
+    return "This could support a tighter retirement plan, especially in lower-cost areas.";
+  }
+  if (monthlyIncome < 7000) {
+    return "This starts to look more workable for many retirees, depending on spending and location.";
+  }
+  if (monthlyIncome < 10000) {
+    return "This points to a comfortable retirement range in many situations.";
+  }
+  if (monthlyIncome < 15000) {
+    return "This suggests a strong retirement income with much more flexibility and breathing room.";
+  }
+  return "This points to a high-income retirement scenario with a wide financial margin.";
+}
+
+function getGrowthLabel(interestEarned: number, totalInvested: number) {
+  if (totalInvested <= 0) return "No investment base yet.";
+  const ratio = interestEarned / totalInvested;
+
+  if (ratio < 0.2) return "Growth is still early.";
+  if (ratio < 0.5) return "Compounding is starting to matter.";
+  if (ratio < 1) return "Your gains are becoming meaningful.";
+  return "Compounding is doing heavy lifting.";
 }
 
 export default function CompoundCalculator() {
@@ -131,9 +171,7 @@ export default function CompoundCalculator() {
     investmentMonthsValue,
   ]);
 
-  const handleCalculate = () => {
-    setHasCalculated(true);
-  };
+  const handleCalculate = () => setHasCalculated(true);
 
   const clearFields = () => {
     setInitialInvestment("");
@@ -144,434 +182,366 @@ export default function CompoundCalculator() {
   };
 
   const showResults = hasCalculated && canCalculate && results;
+  const showPlaceholder =
+    !hasCalculated &&
+    !hasNegativeValues &&
+    !hasNonIntegerMonths &&
+    !hasUnrealisticRate &&
+    !hasUnrealisticMonths;
+
+  const estimatedMonthlyIncome = results
+    ? results.monthlyIncomeAt4Percent
+    : 0;
+
+  const projectionMessage = getProjectionMessage(estimatedMonthlyIncome);
+  const growthLabel = results
+    ? getGrowthLabel(results.interestEarned, results.totalInvested)
+    : "";
 
   return (
-    <main style={styles.page}>
-      <section style={styles.card}>
-        <div style={styles.topRow}>
-          <span style={styles.topBadge}>Free Investment Tool</span>
-          <span style={styles.trustBadge}>Fast & easy to use</span>
-        </div>
+    <main className={styles.page}>
+      <section className={styles.shell}>
+        <header className={styles.hero}>
+          <div className={styles.heroCopy}>
+            <div className={styles.badgeRow}>
+              <span className={styles.badgePrimary}>Free investment tool</span>
+              <span className={styles.badgeSecondary}>Built for real planning</span>
+            </div>
 
-        <h1 style={styles.title}>Compound Interest Calculator (Free & Easy)</h1>
+            <h1 className={styles.title}>Compound Interest Calculator</h1>
 
-        <p style={styles.description}>
-          Estimate your future balance with compound interest and recurring
-          monthly contributions.
-        </p>
+            <p className={styles.lead}>
+              See how your money could grow over time with compounding and
+              recurring monthly contributions.
+            </p>
 
-        <div style={styles.form}>
-          <div style={styles.field}>
-            <label htmlFor="initialInvestment" style={styles.label}>
-              Initial Investment ($)
-            </label>
-            <input
-              id="initialInvestment"
-              type="text"
-              inputMode="decimal"
-              placeholder="1000"
-              value={initialInvestment}
-              onChange={(e) =>
-                setInitialInvestment(cleanDecimalInput(e.target.value))
-              }
-              style={styles.input}
-            />
+            <p className={styles.intro}>
+              This is not just a future balance estimate. It is a way to see
+              what your current saving pace, timeline, and return assumptions
+              could turn into.
+            </p>
+
+            <div className={styles.highlight}>
+              <p className={styles.highlightText}>
+                <strong>Key idea:</strong> small inputs can look modest today.
+                Over enough time, compounding can do the heavy lifting.
+              </p>
+            </div>
           </div>
 
-          <div style={styles.field}>
-            <label htmlFor="monthlyContribution" style={styles.label}>
-              Monthly Contribution ($)
-            </label>
-            <input
-              id="monthlyContribution"
-              type="text"
-              inputMode="decimal"
-              placeholder="250"
-              value={monthlyContribution}
-              onChange={(e) =>
-                setMonthlyContribution(cleanDecimalInput(e.target.value))
-              }
-              style={styles.input}
-            />
+          <aside className={styles.heroPanel}>
+            <div className={styles.heroPanelTop}>
+              <span className={styles.heroPanelEyebrow}>What this tool shows</span>
+              <h2 className={styles.heroPanelTitle}>
+                From contributions to future value
+              </h2>
+            </div>
+
+            <ul className={styles.heroList}>
+              <li>projected final balance.</li>
+              <li>total amount you contributed.</li>
+              <li>estimated growth earned.</li>
+              <li>rough 4% retirement income view.</li>
+            </ul>
+
+            <p className={styles.heroPanelText}>
+              The math is simple. What it could mean for your future is not.
+            </p>
+          </aside>
+        </header>
+
+        <section className={styles.toolSection}>
+          <div className={styles.toolHeader}>
+            <div>
+              <p className={styles.toolEyebrow}>Calculator inputs</p>
+              <h2 className={styles.toolTitle}>Run your projection</h2>
+            </div>
+            <p className={styles.toolText}>
+              Enter your starting amount, monthly contribution, monthly return,
+              and time horizon.
+            </p>
           </div>
 
-          <div style={styles.field}>
-            <label htmlFor="monthlyRate" style={styles.label}>
-              Interest Rate (% per month)
-            </label>
-            <input
-              id="monthlyRate"
-              type="text"
-              inputMode="decimal"
-              placeholder="1.0"
-              value={monthlyRate}
-              onChange={(e) => setMonthlyRate(cleanDecimalInput(e.target.value))}
-              style={styles.input}
-            />
-          </div>
-
-          <div style={styles.field}>
-            <label htmlFor="investmentMonths" style={styles.label}>
-              Investment Period (months)
-            </label>
-            <input
-              id="investmentMonths"
-              type="text"
-              inputMode="numeric"
-              placeholder="24"
-              value={investmentMonths}
-              onChange={(e) =>
-                setInvestmentMonths(cleanIntegerInput(e.target.value))
-              }
-              style={styles.input}
-            />
-          </div>
-        </div>
-
-        <div style={styles.actions}>
-          <button onClick={handleCalculate} style={styles.primaryButton}>
-            Calculate
-          </button>
-
-          <button onClick={clearFields} style={styles.secondaryButton}>
-            Reset Calculator
-          </button>
-        </div>
-
-        {hasNegativeValues && (
-          <p style={styles.error}>
-            Please enter only non-negative values.
-          </p>
-        )}
-
-        {hasNonIntegerMonths && (
-          <p style={styles.error}>
-            Investment period must be a whole number of months.
-          </p>
-        )}
-
-        {hasUnrealisticRate && (
-          <p style={styles.error}>
-            Please enter a realistic monthly rate between 0 and 100.
-          </p>
-        )}
-
-        {hasUnrealisticMonths && (
-          <p style={styles.error}>
-            Investment period is too large. Please use 1200 months or less.
-          </p>
-        )}
-
-        {!hasCalculated &&
-          !hasNegativeValues &&
-          !hasNonIntegerMonths &&
-          !hasUnrealisticRate &&
-          !hasUnrealisticMonths && (
-            <div style={styles.resultBox}>
-              <div style={styles.resultHeader}>
-                <h2 style={styles.resultTitle}>Results</h2>
-                <span style={styles.resultHeaderBadge}>Projection</span>
+          <div className={styles.toolCard}>
+            <div className={styles.form}>
+              <div className={styles.field}>
+                <label htmlFor="initialInvestment" className={styles.label}>
+                  Initial investment ($)
+                </label>
+                <input
+                  id="initialInvestment"
+                  type="text"
+                  inputMode="decimal"
+                  placeholder="1000"
+                  value={initialInvestment}
+                  onChange={(e) =>
+                    setInitialInvestment(cleanDecimalInput(e.target.value))
+                  }
+                  className={styles.input}
+                />
               </div>
 
-              <p style={styles.placeholderText}>
-                Enter your numbers and click Calculate to see your future
-                balance.
-              </p>
-            </div>
-          )}
+              <div className={styles.field}>
+                <label htmlFor="monthlyContribution" className={styles.label}>
+                  Monthly contribution ($)
+                </label>
+                <input
+                  id="monthlyContribution"
+                  type="text"
+                  inputMode="decimal"
+                  placeholder="250"
+                  value={monthlyContribution}
+                  onChange={(e) =>
+                    setMonthlyContribution(cleanDecimalInput(e.target.value))
+                  }
+                  className={styles.input}
+                />
+              </div>
 
-        {showResults && (
-          <div style={styles.resultBox}>
-            <div style={styles.resultHeader}>
-              <h2 style={styles.resultTitle}>Your Projection</h2>
-              <span style={styles.resultHeaderBadge}>Estimated</span>
+              <div className={styles.field}>
+                <label htmlFor="monthlyRate" className={styles.label}>
+                  Interest rate (% per month)
+                </label>
+                <input
+                  id="monthlyRate"
+                  type="text"
+                  inputMode="decimal"
+                  placeholder="1.0"
+                  value={monthlyRate}
+                  onChange={(e) => setMonthlyRate(cleanDecimalInput(e.target.value))}
+                  className={styles.input}
+                />
+              </div>
+
+              <div className={styles.field}>
+                <label htmlFor="investmentMonths" className={styles.label}>
+                  Investment period (months)
+                </label>
+                <input
+                  id="investmentMonths"
+                  type="text"
+                  inputMode="numeric"
+                  placeholder="24"
+                  value={investmentMonths}
+                  onChange={(e) =>
+                    setInvestmentMonths(cleanIntegerInput(e.target.value))
+                  }
+                  className={styles.input}
+                />
+              </div>
             </div>
 
-            <div style={styles.heroValueBox}>
-              <p style={styles.heroValueLabel}>Total Value</p>
-              <p style={styles.heroValue}>{formatCurrency(results.finalAmount)}</p>
-              <p style={styles.heroSubtext}>
-                Based on your current assumptions over {investmentMonthsValue}{" "}
-                months.
-              </p>
+            <div className={styles.actions}>
+              <button onClick={handleCalculate} className={styles.primaryButton}>
+                Calculate projection
+              </button>
+              <button onClick={clearFields} className={styles.secondaryButton}>
+                Reset inputs
+              </button>
             </div>
 
-            <div style={styles.resultRow}>
-              <span style={styles.resultLabel}>Your Investment</span>
-              <strong style={styles.resultValue}>
-                {formatCurrency(results.totalInvested)}
-              </strong>
-            </div>
+            <div className={styles.statusArea}>
+              {hasNegativeValues && (
+                <p className={styles.error}>
+                  Please enter only non-negative values.
+                </p>
+              )}
 
-            <div style={styles.profitRow}>
-              <span style={styles.resultLabel}>Profit Earned</span>
-              <strong style={styles.resultValueGreen}>
-                {formatCurrency(results.interestEarned)}
-              </strong>
+              {hasNonIntegerMonths && (
+                <p className={styles.error}>
+                  Investment period must be a whole number of months.
+                </p>
+              )}
+
+              {hasUnrealisticRate && (
+                <p className={styles.error}>
+                  Please enter a realistic monthly rate between 0 and 100.
+                </p>
+              )}
+
+              {hasUnrealisticMonths && (
+                <p className={styles.error}>
+                  Investment period is too large. Please use 1200 months or less.
+                </p>
+              )}
             </div>
           </div>
+        </section>
+
+        {showPlaceholder && (
+          <section className={styles.resultsSection}>
+            <div className={styles.resultsHero}>
+              <div className={styles.resultsHeroHeader}>
+                <div>
+                  <p className={styles.resultsEyebrow}>Projection area</p>
+                  <h2 className={styles.resultsTitle}>Your results will appear here</h2>
+                </div>
+                <span className={styles.resultsBadge}>Waiting for inputs</span>
+              </div>
+
+              <p className={styles.resultsIntro}>
+                Enter your numbers and run the calculation to see your projected
+                future balance, total invested amount, estimated gains, and a
+                simple retirement-income view.
+              </p>
+            </div>
+
+            <div className={styles.infoGrid}>
+              <div className={styles.infoCard}>
+                <p className={styles.infoLabel}>Future value</p>
+                <p className={styles.infoPlaceholder}>Calculated after you run the tool.</p>
+              </div>
+              <div className={styles.infoCard}>
+                <p className={styles.infoLabel}>Growth earned</p>
+                <p className={styles.infoPlaceholder}>Shows how much compounding added.</p>
+              </div>
+              <div className={styles.infoCard}>
+                <p className={styles.infoLabel}>Retirement income</p>
+                <p className={styles.infoPlaceholder}>Simple monthly estimate at a 4% rate.</p>
+              </div>
+            </div>
+          </section>
         )}
 
-        <div style={styles.noteBox}>
-          <p style={styles.noteTitle}>How this works</p>
-          <p style={styles.noteText}>
-            This calculator assumes monthly compounding and end-of-month
-            contributions.
-          </p>
-          <p style={styles.noteText}>
-            Results are estimates for educational purposes only and should not
-            be considered financial advice.
-          </p>
-        </div>
+        {showResults && results && (
+          <section className={styles.resultsSection}>
+            <div className={styles.resultsHero}>
+              <div className={styles.resultsHeroHeader}>
+                <div>
+                  <p className={styles.resultsEyebrow}>Your projection</p>
+                  <h2 className={styles.resultsTitle}>Here is what your numbers suggest</h2>
+                </div>
+                <span className={styles.resultsBadge}>Estimated</span>
+              </div>
+
+              <div className={styles.heroValueCard}>
+                <p className={styles.heroValueLabel}>Projected future value</p>
+                <p className={styles.heroValue}>
+                  {formatCurrency(results.finalAmount)}
+                </p>
+                <p className={styles.heroValueText}>
+                  Based on {investmentMonthsValue} months of growth and
+                  contributions.
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.metricsGrid}>
+              <div className={styles.metricCard}>
+                <p className={styles.metricLabel}>Total contributed</p>
+                <p className={styles.metricValue}>
+                  {formatCurrency(results.totalInvested)}
+                </p>
+              </div>
+
+              <div className={styles.metricCard}>
+                <p className={styles.metricLabel}>Estimated growth earned</p>
+                <p className={styles.metricValueStrong}>
+                  {formatCurrency(results.interestEarned)}
+                </p>
+              </div>
+
+              <div className={styles.metricCard}>
+                <p className={styles.metricLabel}>Estimated total return</p>
+                <p className={styles.metricValue}>
+                  {formatPercent(results.totalReturnPercent)}
+                </p>
+              </div>
+
+              <div className={styles.metricCard}>
+                <p className={styles.metricLabel}>Investment timeline</p>
+                <p className={styles.metricValue}>
+                  {results.years.toFixed(1)} years
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.incomeSection}>
+              <div className={styles.incomeCard}>
+                <p className={styles.incomeEyebrow}>
+                  Estimated retirement income
+                </p>
+                <p className={styles.incomeValue}>
+                  {formatCurrency(results.monthlyIncomeAt4Percent)} / month
+                </p>
+                <p className={styles.incomeText}>{projectionMessage}</p>
+                <p className={styles.incomeNote}>
+                  Based on a simple 4% withdrawal estimate from your final value.
+                </p>
+              </div>
+
+              <div className={styles.interpretationCard}>
+                <p className={styles.interpretationEyebrow}>What this result is saying</p>
+                <h3 className={styles.interpretationTitle}>
+                  {growthLabel}
+                </h3>
+                <p className={styles.interpretationText}>
+                  Your ending balance is not just a headline number. It is a
+                  rough picture of what your current saving pace and return
+                  assumptions could build over time.
+                </p>
+                <p className={styles.interpretationText}>
+                  A larger balance can support more income. But income is what
+                  you live on. The balance is just the engine.
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.linksCard}>
+              <h3 className={styles.linksTitle}>
+                Want to see what this could mean for retirement?
+              </h3>
+              <p className={styles.linksText}>
+                Compare this projection with common retirement income levels and
+                see how different monthly amounts may actually feel.
+              </p>
+              <div className={styles.linkPills}>
+                <Link
+                  href="/is-5000-a-month-enough-to-retire"
+                  className={styles.linkPill}
+                >
+                  Is $5,000 a month enough to retire?
+                </Link>
+                <Link
+                  href="/is-10000-a-month-enough-to-retire"
+                  className={styles.linkPill}
+                >
+                  Is $10,000 a month enough to retire?
+                </Link>
+                <Link
+                  href="/what-net-worth-generates-10000-a-month"
+                  className={styles.linkPill}
+                >
+                  What net worth generates $10,000 a month?
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <section className={styles.footerNotes}>
+          <div className={styles.noteCard}>
+            <p className={styles.noteTitle}>How this works</p>
+            <p className={styles.noteText}>
+              This calculator assumes monthly compounding and end-of-month
+              contributions.
+            </p>
+            <p className={styles.noteText}>
+              Results are estimates for educational purposes only and should not
+              be treated as personal financial advice.
+            </p>
+          </div>
+
+          <div className={styles.noteCard}>
+            <p className={styles.noteTitle}>Why this matters</p>
+            <p className={styles.noteText}>
+              Compounding is one of the clearest ways to see how time,
+              consistency, and rate of return interact. Small monthly decisions
+              can grow into very different outcomes.
+            </p>
+          </div>
+        </section>
       </section>
     </main>
   );
 }
-
-const styles: Record<string, CSSProperties> = {
-  page: {
-    minHeight: "100vh",
-    background:
-      "linear-gradient(180deg, #eef4ff 0%, #f8fbff 45%, #f3f7fc 100%)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "32px 20px",
-    fontFamily:
-      'Inter, Arial, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-  },
-  card: {
-    width: "100%",
-    maxWidth: "780px",
-    backgroundColor: "#ffffff",
-    borderRadius: "28px",
-    padding: "34px",
-    boxShadow: "0 24px 70px rgba(15, 23, 42, 0.12)",
-    border: "1px solid rgba(37, 99, 235, 0.08)",
-  },
-  topRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "12px",
-    flexWrap: "wrap",
-    marginBottom: "18px",
-  },
-  topBadge: {
-    display: "inline-block",
-    fontSize: "12px",
-    fontWeight: 800,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase",
-    color: "#1d4ed8",
-    backgroundColor: "#dbeafe",
-    padding: "8px 12px",
-    borderRadius: "999px",
-  },
-  trustBadge: {
-    fontSize: "12px",
-    fontWeight: 700,
-    color: "#475569",
-    backgroundColor: "#f8fafc",
-    border: "1px solid #e2e8f0",
-    padding: "8px 12px",
-    borderRadius: "999px",
-  },
-  title: {
-    fontSize: "44px",
-    lineHeight: "1.08",
-    margin: "0 0 12px 0",
-    color: "#0f172a",
-    fontWeight: 800,
-    letterSpacing: "-0.02em",
-  },
-  description: {
-    fontSize: "17px",
-    color: "#475569",
-    marginBottom: "28px",
-    lineHeight: "1.6",
-    maxWidth: "650px",
-  },
-  form: {
-    display: "grid",
-    gap: "18px",
-  },
-  field: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  label: {
-    fontSize: "14px",
-    fontWeight: 700,
-    marginBottom: "8px",
-    color: "#1e293b",
-  },
-  input: {
-    width: "100%",
-    padding: "15px 16px",
-    fontSize: "16px",
-    borderRadius: "14px",
-    border: "1px solid #cbd5e1",
-    backgroundColor: "#f8fafc",
-    color: "#0f172a",
-    outline: "none",
-    boxSizing: "border-box",
-  },
-  actions: {
-    marginTop: "22px",
-    display: "flex",
-    justifyContent: "flex-end",
-    gap: "12px",
-    flexWrap: "wrap",
-  },
-  primaryButton: {
-    border: "none",
-    borderRadius: "14px",
-    padding: "14px 20px",
-    fontSize: "15px",
-    fontWeight: 800,
-    cursor: "pointer",
-    background: "linear-gradient(135deg, #3b82f6, #06b6d4)",
-    color: "#ffffff",
-    boxShadow: "0 12px 24px rgba(59, 130, 246, 0.28)",
-  },
-  secondaryButton: {
-    border: "1px solid #cbd5e1",
-    borderRadius: "14px",
-    padding: "14px 20px",
-    fontSize: "15px",
-    fontWeight: 800,
-    cursor: "pointer",
-    backgroundColor: "#ffffff",
-    color: "#0f172a",
-  },
-  error: {
-    marginTop: "16px",
-    color: "#991b1b",
-    backgroundColor: "#fee2e2",
-    padding: "13px 14px",
-    borderRadius: "14px",
-    fontSize: "14px",
-    fontWeight: 600,
-  },
-  resultBox: {
-    marginTop: "28px",
-    background: "linear-gradient(180deg, #0f172a 0%, #172554 100%)",
-    borderRadius: "22px",
-    padding: "24px",
-    border: "1px solid rgba(255,255,255,0.08)",
-    boxShadow: "0 18px 40px rgba(15, 23, 42, 0.24)",
-  },
-  resultHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "12px",
-    flexWrap: "wrap",
-    marginBottom: "18px",
-  },
-  resultTitle: {
-    margin: 0,
-    fontSize: "22px",
-    color: "#ffffff",
-    fontWeight: 800,
-  },
-  resultHeaderBadge: {
-    fontSize: "12px",
-    fontWeight: 800,
-    letterSpacing: "0.06em",
-    textTransform: "uppercase",
-    color: "#bfdbfe",
-    backgroundColor: "rgba(255,255,255,0.08)",
-    padding: "8px 10px",
-    borderRadius: "999px",
-  },
-  placeholderText: {
-    margin: 0,
-    color: "#cbd5e1",
-    fontSize: "15px",
-    lineHeight: "1.6",
-  },
-  heroValueBox: {
-    background: "rgba(255,255,255,0.06)",
-    border: "1px solid rgba(255,255,255,0.08)",
-    borderRadius: "18px",
-    padding: "18px",
-    marginBottom: "16px",
-  },
-  heroValueLabel: {
-    margin: "0 0 8px 0",
-    color: "#cbd5e1",
-    fontSize: "13px",
-    fontWeight: 700,
-    textTransform: "uppercase",
-    letterSpacing: "0.06em",
-  },
-  heroValue: {
-    margin: 0,
-    color: "#ffffff",
-    fontSize: "34px",
-    fontWeight: 800,
-    lineHeight: "1.1",
-  },
-  heroSubtext: {
-    margin: "8px 0 0 0",
-    color: "#94a3b8",
-    fontSize: "14px",
-    lineHeight: "1.5",
-  },
-  resultRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "16px",
-    padding: "14px 0",
-    borderBottom: "1px solid rgba(255,255,255,0.12)",
-    color: "#e2e8f0",
-    fontSize: "16px",
-  },
-  profitRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "16px",
-    padding: "16px 0 0 0",
-    color: "#e2e8f0",
-    fontSize: "16px",
-  },
-  resultLabel: {
-    color: "#cbd5e1",
-    fontWeight: 600,
-  },
-  resultValue: {
-    color: "#ffffff",
-    fontSize: "18px",
-    fontWeight: 700,
-  },
-  resultValueGreen: {
-    color: "#4ade80",
-    fontSize: "22px",
-    fontWeight: 800,
-  },
-  noteBox: {
-    marginTop: "24px",
-    padding: "18px",
-    borderRadius: "18px",
-    backgroundColor: "#f8fafc",
-    border: "1px solid #dbeafe",
-  },
-  noteTitle: {
-    margin: "0 0 8px 0",
-    fontSize: "14px",
-    fontWeight: 800,
-    color: "#1d4ed8",
-    textTransform: "uppercase",
-    letterSpacing: "0.04em",
-  },
-  noteText: {
-    margin: "6px 0 0 0",
-    fontSize: "14px",
-    color: "#475569",
-    lineHeight: "1.6",
-  },
-};

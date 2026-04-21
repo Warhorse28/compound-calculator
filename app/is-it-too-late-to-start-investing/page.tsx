@@ -4,11 +4,10 @@ import styles from "./page.module.css";
 
 const siteUrl = "https://yoursite.com";
 const pagePath = "/is-it-too-late-to-start-investing";
-const calculatorPath = "/calculator";
+const calculatorPath = "/compound-interest-calculator";
 
 const pageTitle =
   "Is It Too Late to Start Investing at 30, 40, or 50+? What It Does to Your Final Balance";
-
 const pageDescription =
   "See what starting to invest at 30, 40, or 50+ could do to your final balance. Compare timelines, contribution pressure, and realistic outcomes with a calculator.";
 
@@ -135,7 +134,7 @@ const relatedGuides = [
 
 export default function Page() {
   return (
-    <main className={styles.pageShell}>
+    <main className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -145,9 +144,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <article className={styles.articleCard}>
-        <header className={styles.heroSection}>
-          <div className={styles.eyebrow}>Late-start investing</div>
+      <article className={styles.article}>
+        <header className={styles.hero}>
+          <span className={styles.eyebrow}>LATE-START INVESTING</span>
 
           <h1 className={styles.title}>
             Is It Too Late to Start Investing at 30, 40, or 50+? What It Does
@@ -161,7 +160,7 @@ export default function Page() {
             contribution.
           </p>
 
-          <p className={styles.lead}>
+          <p className={styles.intro}>
             That matters whether you are 30, 40, or 50+. Starting earlier makes
             the path easier, but later starters can still build meaningful
             results. The real question is not whether the opportunity is gone.
@@ -169,15 +168,24 @@ export default function Page() {
             position.
           </p>
 
-          <div className={styles.callout} role="note" aria-label="Key insight">
-            <strong>Key insight:</strong> starting later usually lowers the
-            final balance, but it does not erase the value of investing. The
-            strategy changes. The opportunity does not disappear.
+          <div className={styles.highlight} role="note" aria-label="Key takeaway">
+            <p className={styles.highlightLabel}>Key takeaway</p>
+            <p className={styles.highlightText}>
+              Starting later usually lowers the final balance, but it does not
+              erase the value of investing. The strategy changes. The
+              opportunity does not disappear.
+            </p>
           </div>
 
           <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.heroButton}>
-              See What Starting Later Could Change →
+            <Link href={calculatorPath} className={styles.primaryCta}>
+              See what starting later could change
+            </Link>
+            <Link
+              href="/best-age-to-start-investing"
+              className={styles.secondaryLink}
+            >
+              Compare starting ages
             </Link>
           </div>
         </header>
@@ -213,7 +221,7 @@ export default function Page() {
           </ul>
         </nav>
 
-        <section id="why-it-feels-late" className={styles.contentSection}>
+        <section id="why-it-feels-late" className={styles.section}>
           <h2 className={styles.sectionTitle}>
             Why starting later feels more risky than starting early
           </h2>
@@ -239,24 +247,19 @@ export default function Page() {
           </ul>
         </section>
 
-        <section id="age-comparison" className={styles.contentSection}>
+        <section id="age-comparison" className={styles.section}>
           <h2 className={styles.sectionTitle}>
             What it does to your final balance at 30, 40, or 50+
           </h2>
 
           <p className={styles.paragraph}>
-            To make the difference easier to see, imagine the same person
-            investing <strong>$400 per month</strong> at an assumed{" "}
-            <strong>8% annual return</strong>, stopping at age 65. The biggest
-            variable here is not effort per month. It is time.
+            Imagine the same person investing <strong>$400 per month</strong> at
+            an assumed <strong>8% annual return</strong>, stopping at age 65.
+            The biggest variable here is not effort per month. It is time.
           </p>
 
           <div className={styles.tableWrap}>
             <table className={styles.table}>
-              <caption className={styles.tableCaption}>
-                Same monthly amount. Same assumed return. Different starting
-                ages.
-              </caption>
               <thead>
                 <tr>
                   <th className={styles.tableHead}>Start age</th>
@@ -290,8 +293,7 @@ export default function Page() {
             The age-30 scenario has a clear time advantage. The age-40 scenario
             still has room for meaningful growth, but the gap becomes visible.
             The age-50 scenario finishes with a smaller balance, yet it still
-            creates useful capital that may help with retirement income, future
-            expenses, or overall financial resilience.
+            creates useful capital.
           </p>
 
           <div className={styles.noteBox}>
@@ -305,7 +307,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="what-changes" className={styles.contentSection}>
+        <section id="what-changes" className={styles.section}>
           <h2 className={styles.sectionTitle}>
             What actually changes when you start later
           </h2>
@@ -333,7 +335,7 @@ export default function Page() {
           </ul>
         </section>
 
-        <section id="how-to-respond" className={styles.contentSection}>
+        <section id="how-to-respond" className={styles.section}>
           <h2 className={styles.sectionTitle}>
             How to respond intelligently if you are starting later
           </h2>
@@ -360,8 +362,7 @@ export default function Page() {
             >
               monthly investing scenarios
             </Link>
-            . If you want to understand how long compounding needs to work,
-            read{" "}
+            . If you want to understand how long compounding needs to work, read{" "}
             <Link
               href="/how-long-does-it-take-to-double-your-money"
               className={styles.inlineLink}
@@ -370,30 +371,29 @@ export default function Page() {
             </Link>
             .
           </p>
+        </section>
 
+        <section className={styles.ctaSection}>
           <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
-              Test your age and timeline now
-            </h2>
+            <h2 className={styles.ctaTitle}>Test your age and timeline now</h2>
             <p className={styles.ctaText}>
               Compare 30, 40, and 50+, change the monthly amount, and see what
               your current starting point could do to your final balance.
             </p>
             <Link href={calculatorPath} className={styles.ctaButton}>
-              Test Your Numbers in the Calculator →
+              Test your numbers in the calculator
             </Link>
           </div>
         </section>
 
-        <section
-          className={styles.relatedSection}
-          aria-labelledby="related-guides"
-        >
-          <h2 id="related-guides" className={styles.relatedHeading}>
-            Related guides
-          </h2>
+        <section className={styles.section} aria-labelledby="related-guides">
+          <div className={styles.sectionHeader}>
+            <h2 id="related-guides" className={styles.sectionTitle}>
+              Related guides
+            </h2>
+          </div>
 
-          <div className={styles.relatedGrid}>
+          <nav className={styles.relatedGrid} aria-label="Related guides">
             {relatedGuides.map((guide) => (
               <Link
                 key={guide.href}
@@ -405,17 +405,11 @@ export default function Page() {
                 <span className={styles.relatedText}>{guide.text}</span>
               </Link>
             ))}
-          </div>
+          </nav>
         </section>
 
-        <section
-          id="faq"
-          className={styles.contentSection}
-          aria-labelledby="faq-heading"
-        >
-          <h2 id="faq-heading" className={styles.sectionTitle}>
-            Frequently asked questions
-          </h2>
+        <section id="faq" className={styles.section}>
+          <h2 className={styles.sectionTitle}>Frequently asked questions</h2>
 
           {faqItems.map((item) => (
             <div key={item.question} className={styles.faqItem}>
@@ -425,47 +419,13 @@ export default function Page() {
           ))}
         </section>
 
-        <section
-          className={styles.contentSection}
-          aria-labelledby="final-takeaway"
-        >
-          <h2 id="final-takeaway" className={styles.sectionTitle}>
-            Final takeaway
-          </h2>
-
-          <p className={styles.paragraph}>
-            Is it too late to start investing at 30, 40, or 50+? No. What
-            changes is the final balance, the monthly pressure, and the kind of
-            strategy that makes sense. Starting earlier would have made the path
-            easier, but starting now can still improve what happens next.
+        <section className={styles.bottomCta}>
+          <p className={styles.bottomCtaText}>
+            Want to see what your age could do to your final balance?
           </p>
-
-          <p className={styles.paragraph}>
-            If you want a broader age-based comparison, read our{" "}
-            <Link
-              href="/best-age-to-start-investing"
-              className={styles.inlineLink}
-            >
-              best age to start investing guide
-            </Link>
-            . If you want to compare a delayed start directly, explore{" "}
-            <Link
-              href="/investing-early-vs-late-how-big-is-the-difference"
-              className={styles.inlineLink}
-            >
-              investing early vs late
-            </Link>
-            .
-          </p>
-
-          <div className={styles.bottomCta}>
-            <p className={styles.bottomCtaText}>
-              Want to see what your age could do to your final balance?
-            </p>
-            <Link href={calculatorPath} className={styles.bottomCtaLink}>
-              Compare your scenario with your own numbers →
-            </Link>
-          </div>
+          <Link href={calculatorPath} className={styles.bottomCtaLink}>
+            Compare your scenario with your own numbers
+          </Link>
         </section>
       </article>
     </main>

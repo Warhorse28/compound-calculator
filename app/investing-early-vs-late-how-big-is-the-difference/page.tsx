@@ -4,171 +4,112 @@ import styles from "./page.module.css";
 
 const siteUrl = "https://yoursite.com";
 const pagePath = "/investing-early-vs-late-how-big-is-the-difference";
-const calculatorPath = "/calculator";
-
-const pageTitle =
-  "Investing Early vs Late: How Big Is the Difference? Real Examples + Calculator";
-
-const pageDescription =
-  "Compare investing early vs late with clear examples, realistic numbers, and a simple calculator. See how much a 10-year delay can change your final balance.";
+const calculatorPath = "/compound-interest-calculator";
 
 export const metadata: Metadata = {
-  title: pageTitle,
-  description: pageDescription,
+  title:
+    "Investing Early vs Late: How Big Is the Difference? Real Examples + Calculator",
+  description:
+    "Compare investing early vs late with clear examples, realistic numbers, and a simple calculator. See how much a 10-year delay can change your final balance.",
   alternates: {
     canonical: `${siteUrl}${pagePath}`,
   },
-  openGraph: {
-    title: pageTitle,
-    description: pageDescription,
-    url: `${siteUrl}${pagePath}`,
-    siteName: "Your Site",
-    type: "article",
-  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Does investing early really make a big difference?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Starting earlier gives your money more time to compound, which can create a much larger final balance.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I catch up if I start late?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sometimes, but it usually requires higher monthly contributions or more time.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why is the difference so big?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Because compounding needs time. Early gains generate more gains for longer.",
+      },
+    },
+  ],
 };
 
 const faqItems = [
   {
     question: "Does investing early really make a big difference?",
     answer:
-      "Yes. Starting earlier gives your money more time to compound, which can create a much larger final balance even when monthly contributions stay the same.",
+      "Yes. Starting earlier gives your money more time to compound, which can create a much larger final balance.",
   },
   {
-    question: "Is investing early better than investing more later?",
+    question: "Can I catch up if I start late?",
     answer:
-      "In many cases, yes. Starting earlier can reduce the need to make much larger contributions later just to reach a similar result.",
+      "Sometimes, but it usually requires higher monthly contributions or more time.",
   },
   {
-    question: "Why is the gap between early and late investing so large?",
+    question: "Why is the difference so big?",
     answer:
-      "Because compounding needs time. Earlier gains can produce additional gains for longer, which widens the long-term difference.",
-  },
-  {
-    question: "Can I catch up if I start investing late?",
-    answer:
-      "Sometimes, but it often requires higher monthly contributions, more time invested, or stronger return assumptions.",
-  },
-];
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
-
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: pageTitle,
-  description: pageDescription,
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": `${siteUrl}${pagePath}`,
-  },
-  author: {
-    "@type": "Organization",
-    name: "Your Site",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Your Site",
-  },
-};
-
-const comparisonRows = [
-  {
-    investor: "Early investor",
-    monthlyAmount: "$300",
-    annualReturn: "8%",
-    startAge: "25",
-    endAge: "55",
-    yearsInvested: "30 years",
-    estimatedBalance: "~$447,000",
-    keyTakeaway: "More time gives compounding longer to build.",
-  },
-  {
-    investor: "Late investor",
-    monthlyAmount: "$300",
-    annualReturn: "8%",
-    startAge: "35",
-    endAge: "55",
-    yearsInvested: "20 years",
-    estimatedBalance: "~$178,000",
-    keyTakeaway: "A shorter timeline puts more pressure on each deposit.",
-  },
-];
-
-const relatedGuides = [
-  {
-    href: "/how-to-calculate-compound-interest",
-    label: "Guide",
-    title: "How to Calculate Compound Interest",
-    text: "Learn the formula behind growth and see why time changes the result so much.",
-  },
-  {
-    href: "/how-much-will-i-have-if-i-invest-every-month",
-    label: "Scenario",
-    title: "How Much Will I Have If I Invest Every Month?",
-    text: "See how regular monthly deposits can build into a much larger long-term balance.",
-  },
-  {
-    href: "/what-interest-rate-do-i-need-to-reach-my-investment-goal",
-    label: "Planning",
-    title: "What Interest Rate Do I Need to Reach My Investment Goal?",
-    text: "Compare how return, timeline, and monthly contributions shape your plan.",
+      "Because compounding needs time. Early gains generate more gains for longer.",
   },
 ];
 
 export default function Page() {
   return (
-    <main className={styles.pageShell}>
+    <main className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
 
-      <article className={styles.articleCard}>
-        <header className={styles.heroSection}>
-          <div className={styles.eyebrow}>Timing comparison</div>
+      <article className={styles.article}>
+        <header className={styles.hero}>
+          <span className={styles.eyebrow}>TIMING COMPARISON</span>
 
           <h1 className={styles.title}>
             Investing Early vs Late: How Big Is the Difference?
           </h1>
 
           <p className={styles.lead}>
-            Your start date can completely change how much money you end up
-            with. The real difference is not only that you begin investing
-            sooner. It is that your money gets more years to compound on top of
-            itself.
+            Starting earlier does not just give you more time. It gives your
+            money more opportunities to grow on top of previous growth.
           </p>
 
-          <p className={styles.lead}>
-            That is why two people can invest the same monthly amount, earn the
-            same average return, and still finish with dramatically different
-            balances. A delay changes more than the calendar. It changes how
-            long every future gain has to keep working.
+          <p className={styles.intro}>
+            That is why two people investing the same amount can end with very
+            different results. A 10-year delay does not only shorten the plan.
+            It removes years of compounding that are hard to replace later.
           </p>
 
-          <div className={styles.callout} role="note" aria-label="Key insight">
-            <strong>Key insight:</strong> investing late does not only remove a
-            few years of deposits. It also removes years of growth on earlier
-            gains, which is why the gap can become much larger than expected.
+          <div className={styles.highlight} role="note" aria-label="Key takeaway">
+            <p className={styles.highlightLabel}>Key takeaway</p>
+            <p className={styles.highlightText}>
+              A delay does not only reduce time. It removes years of growth on
+              top of growth, which is why the final gap can become much larger
+              than most people expect.
+            </p>
           </div>
 
           <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.heroButton}>
-              See How Your Start Date Changes the Result →
+            <Link href={calculatorPath} className={styles.primaryCta}>
+              Compare your scenario
+            </Link>
+            <Link
+              href="/how-much-will-i-have-if-i-invest-every-month"
+              className={styles.secondaryLink}
+            >
+              See monthly investing examples
             </Link>
           </div>
         </header>
@@ -177,23 +118,13 @@ export default function Page() {
           <p className={styles.tocTitle}>On this page</p>
           <ul className={styles.tocList}>
             <li>
-              <a href="#why-the-gap-grows" className={styles.tocLink}>
-                Why the gap grows over time
+              <a href="#example" className={styles.tocLink}>
+                Side-by-side example
               </a>
             </li>
             <li>
-              <a href="#side-by-side-example" className={styles.tocLink}>
-                Early vs late investing example
-              </a>
-            </li>
-            <li>
-              <a href="#why-catching-up-is-hard" className={styles.tocLink}>
-                Why catching up is harder than it looks
-              </a>
-            </li>
-            <li>
-              <a href="#how-to-think-about-it" className={styles.tocLink}>
-                How to think about it realistically
+              <a href="#why" className={styles.tocLink}>
+                Why time matters
               </a>
             </li>
             <li>
@@ -204,209 +135,117 @@ export default function Page() {
           </ul>
         </nav>
 
-        <section id="why-the-gap-grows" className={styles.contentSection}>
-          <h2 className={styles.sectionTitle}>
-            Why the gap between early and late investing grows so much
+        <section
+          id="example"
+          className={styles.section}
+          aria-labelledby="example-title"
+        >
+          <h2 id="example-title" className={styles.sectionTitle}>
+            Early vs late investing example
           </h2>
 
           <p className={styles.paragraph}>
-            The first mistake people make is treating time like a small detail.
-            In reality, time is one of the main engines of compound growth.
-            Starting earlier gives every contribution more chances to grow, and
-            it gives each gain more chances to create another gain.
-          </p>
-
-          <p className={styles.paragraph}>
-            That creates a stacking effect. A late start does not just mean
-            less time invested. It often means needing a much more demanding
-            plan later to approach the same destination.
-          </p>
-
-          <ul className={styles.list}>
-            <li>earlier investing gives every deposit more time to grow</li>
-            <li>later investing often increases contribution pressure</li>
-            <li>
-              more time can reduce the need for aggressive return assumptions
-            </li>
-            <li>delays can be expensive even when they look small on paper</li>
-          </ul>
-        </section>
-
-        <section id="side-by-side-example" className={styles.contentSection}>
-          <h2 className={styles.sectionTitle}>
-            Early vs late investing: a side-by-side example
-          </h2>
-
-          <p className={styles.paragraph}>
-            Imagine two investors making the same monthly contribution and
-            earning the same average annual return. The only major difference is
-            when they begin.
+            Two investors, same contribution, same return. The only difference
+            is when they start.
           </p>
 
           <div className={styles.tableWrap}>
             <table className={styles.table}>
-              <caption className={styles.tableCaption}>
-                Same contribution. Same assumed return. Different starting ages.
-              </caption>
               <thead>
                 <tr>
                   <th className={styles.tableHead}>Investor</th>
-                  <th className={styles.tableHead}>Monthly amount</th>
-                  <th className={styles.tableHead}>Annual return</th>
                   <th className={styles.tableHead}>Start age</th>
-                  <th className={styles.tableHead}>End age</th>
                   <th className={styles.tableHead}>Years invested</th>
-                  <th className={styles.tableHead}>Estimated balance</th>
-                  <th className={styles.tableHead}>What changes</th>
+                  <th className={styles.tableHead}>Ending balance</th>
                 </tr>
               </thead>
               <tbody>
-                {comparisonRows.map((row) => (
-                  <tr key={row.investor}>
-                    <td className={styles.tableCellStrong}>{row.investor}</td>
-                    <td className={styles.tableCell}>{row.monthlyAmount}</td>
-                    <td className={styles.tableCell}>{row.annualReturn}</td>
-                    <td className={styles.tableCell}>{row.startAge}</td>
-                    <td className={styles.tableCell}>{row.endAge}</td>
-                    <td className={styles.tableCell}>{row.yearsInvested}</td>
-                    <td className={styles.tableCellStrong}>
-                      {row.estimatedBalance}
-                    </td>
-                    <td className={styles.tableCell}>{row.keyTakeaway}</td>
-                  </tr>
-                ))}
+                <tr>
+                  <td className={styles.tableCell}>Early</td>
+                  <td className={styles.tableCell}>25</td>
+                  <td className={styles.tableCell}>30</td>
+                  <td className={styles.tableCell}>~$447,000</td>
+                </tr>
+                <tr>
+                  <td className={styles.tableCell}>Late</td>
+                  <td className={styles.tableCell}>35</td>
+                  <td className={styles.tableCell}>20</td>
+                  <td className={styles.tableCell}>~$178,000</td>
+                </tr>
               </tbody>
             </table>
           </div>
 
           <p className={styles.paragraph}>
-            In this example, the early investor ends up with roughly{" "}
-            <strong>$269,000 more</strong> by age 55, even though both investors
-            put in the same $300 per month and both assumed the same 8% annual
-            return.
+            That gap is not just about investing longer. It is about giving
+            compounding more time to work. The early investor gets more years
+            where past gains can create new gains.
           </p>
 
-          <p className={styles.paragraph}>
-            That is the part that matters. The early investor did not just
-            invest for longer. They gave compounding 10 extra years to keep
-            building. That is why a 10-year delay can create such a large
-            long-term gap.
-          </p>
-
-          <div className={styles.noteBox}>
-            <p className={styles.noteTitle}>What this usually means in practice</p>
-            <p className={styles.noteText}>
-              A later start often requires either much larger monthly
-              contributions, a longer investing timeline, or more optimistic
-              return assumptions to close the same gap.
+          <div className={styles.tipBox}>
+            <p className={styles.tipTitle}>What the example really shows</p>
+            <p className={styles.tipText}>
+              Starting earlier reduces the pressure to contribute more later or
+              chase higher returns. Time does part of the heavy lifting.
             </p>
           </div>
         </section>
 
-        <section id="why-catching-up-is-hard" className={styles.contentSection}>
-          <h2 className={styles.sectionTitle}>
-            Why catching up later is harder than it looks
+        <section
+          id="why"
+          className={styles.section}
+          aria-labelledby="why-title"
+        >
+          <h2 id="why-title" className={styles.sectionTitle}>
+            Why time matters so much
           </h2>
 
           <p className={styles.paragraph}>
-            A lot of people assume they can simply invest more later and fix the
-            problem. Sometimes they can, but the catch-up plan is often much
-            steeper than expected.
-          </p>
-
-          <p className={styles.paragraph}>
-            That is because later contributions are trying to replace not only
-            missed deposits, but also missed compounding time. That is a much
-            harder problem to solve.
+            A lot of people think the biggest difference comes from how much you
+            invest. That matters, but time changes what each dollar can do.
           </p>
 
           <ul className={styles.list}>
-            <li>late starters often need higher monthly deposits</li>
-            <li>the same target may require more years</li>
-            <li>higher return assumptions may feel tempting but add risk</li>
-            <li>a delay can reduce flexibility later in life</li>
+            <li>More time means more compounding cycles</li>
+            <li>Early gains get the chance to generate future gains</li>
+            <li>Starting earlier reduces the pressure to chase high returns</li>
+            <li>Late starters often need bigger monthly contributions</li>
           </ul>
+
+          <p className={styles.paragraph}>
+            A delay forces your future contributions to work harder. That does
+            not mean starting late is pointless. It means the plan usually needs
+            stronger contributions, more patience, or both.
+          </p>
+
+          <div className={styles.noteBox}>
+            <p className={styles.noteTitle}>Why this matters in practice</p>
+            <p className={styles.noteText}>
+              If you start later, the solution is not panic. The useful question
+              is how much you need to adjust your monthly investing plan to make
+              up for lost time.
+            </p>
+          </div>
         </section>
 
-        <section id="how-to-think-about-it" className={styles.contentSection}>
-          <h2 className={styles.sectionTitle}>
-            How to think about early vs late investing realistically
-          </h2>
-
-          <p className={styles.paragraph}>
-            If you started late, the useful response is not panic. It is
-            clarity. The real question becomes: what can you change now that has
-            the biggest effect on your final outcome?
-          </p>
-
-          <p className={styles.paragraph}>
-            If you want to understand the math behind this, read our{" "}
-            <Link
-              href="/how-to-calculate-compound-interest"
-              className={styles.inlineLink}
-            >
-              compound interest guide
-            </Link>
-            . If you want to see how regular deposits build over time, explore{" "}
-            <Link
-              href="/how-much-will-i-have-if-i-invest-every-month"
-              className={styles.inlineLink}
-            >
-              monthly investing scenarios
-            </Link>
-            . If you want a faster way to think about time and growth, read{" "}
-            <Link
-              href="/how-long-does-it-take-to-double-your-money"
-              className={styles.inlineLink}
-            >
-              how long it takes to double your money
-            </Link>
-            .
-          </p>
-
+        <section className={styles.ctaSection} aria-labelledby="cta-title">
           <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
-              See how much 10 years could change your result
+            <h2 id="cta-title" className={styles.ctaTitle}>
+              Compare your own timeline
             </h2>
             <p className={styles.ctaText}>
-              Test an earlier start versus a delayed start, adjust the monthly
-              amount, and compare how much your final balance can move.
+              Test different starting ages, monthly contributions, and return
+              assumptions to see how much a delay could change your final
+              balance.
             </p>
             <Link href={calculatorPath} className={styles.ctaButton}>
-              Test Your Timeline in the Calculator →
+              Use the compound interest calculator
             </Link>
           </div>
         </section>
 
-        <section
-          className={styles.relatedSection}
-          aria-labelledby="related-guides"
-        >
-          <h2 id="related-guides" className={styles.relatedHeading}>
-            Related guides
-          </h2>
-
-          <div className={styles.relatedGrid}>
-            {relatedGuides.map((guide) => (
-              <Link
-                key={guide.href}
-                href={guide.href}
-                className={styles.relatedCard}
-              >
-                <span className={styles.relatedLabel}>{guide.label}</span>
-                <strong className={styles.relatedTitle}>{guide.title}</strong>
-                <span className={styles.relatedText}>{guide.text}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section
-          id="faq"
-          className={styles.contentSection}
-          aria-labelledby="faq-heading"
-        >
-          <h2 id="faq-heading" className={styles.sectionTitle}>
+        <section id="faq" className={styles.section} aria-labelledby="faq-title">
+          <h2 id="faq-title" className={styles.sectionTitle}>
             Frequently asked questions
           </h2>
 
@@ -418,47 +257,66 @@ export default function Page() {
           ))}
         </section>
 
-        <section
-          className={styles.contentSection}
-          aria-labelledby="final-takeaway"
-        >
-          <h2 id="final-takeaway" className={styles.sectionTitle}>
-            Final takeaway
-          </h2>
+        <section className={styles.section} aria-labelledby="related-guides-title">
+          <div className={styles.sectionHeader}>
+            <h2 id="related-guides-title" className={styles.sectionTitle}>
+              Related guides
+            </h2>
+            <p className={styles.relatedIntro}>
+              Explore the math behind compounding, monthly investing, and the
+              tradeoff between time and contribution size.
+            </p>
+          </div>
 
-          <p className={styles.paragraph}>
-            Investing early vs late is not a small difference. It can reshape
-            the entire plan. A delayed start can force later contributions to
-            work much harder because they are trying to replace lost compounding
-            time.
-          </p>
+          <nav className={styles.relatedGrid} aria-label="Related guides">
+            <Link
+              href="/how-to-calculate-compound-interest"
+              className={styles.relatedCard}
+            >
+              <span className={styles.relatedLabel}>Guide</span>
+              <strong className={styles.relatedTitle}>
+                Compound interest explained
+              </strong>
+              <span className={styles.relatedText}>
+                Understand how long-term growth actually works.
+              </span>
+            </Link>
 
-          <p className={styles.paragraph}>
-            If you want to compare deposit growth directly, explore{" "}
             <Link
               href="/how-much-will-i-have-if-i-invest-every-month"
-              className={styles.inlineLink}
+              className={styles.relatedCard}
             >
-              monthly investing scenarios
+              <span className={styles.relatedLabel}>Scenario</span>
+              <strong className={styles.relatedTitle}>
+                Monthly investing results
+              </strong>
+              <span className={styles.relatedText}>
+                See how consistency builds wealth over time.
+              </span>
             </Link>
-            . If you want to connect return assumptions with time, read{" "}
-            <Link
-              href="/how-long-does-it-take-to-double-your-money"
-              className={styles.inlineLink}
-            >
-              how long it takes to double your money
-            </Link>
-            .
-          </p>
 
-          <div className={styles.bottomCta}>
-            <p className={styles.bottomCtaText}>
-              Want to see how much a delayed start could cost you?
-            </p>
-            <Link href={calculatorPath} className={styles.bottomCtaLink}>
-              Compare your timelines with your own numbers →
+            <Link
+              href="/best-age-to-start-investing"
+              className={styles.relatedCard}
+            >
+              <span className={styles.relatedLabel}>Planning</span>
+              <strong className={styles.relatedTitle}>
+                Best age to start investing
+              </strong>
+              <span className={styles.relatedText}>
+                See what changes when you begin at 25, 35, or later.
+              </span>
             </Link>
-          </div>
+          </nav>
+        </section>
+
+        <section className={styles.bottomCta}>
+          <p className={styles.bottomCtaText}>
+            Want to test your own timeline and contribution level?
+          </p>
+          <Link href={calculatorPath} className={styles.bottomCtaLink}>
+            Use the calculator
+          </Link>
         </section>
       </article>
     </main>
