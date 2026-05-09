@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import styles from "./page.module.css";
 
-const siteUrl = "https://compoundwealth.com";
+const siteUrl = "https://scalemonthly.com";
 const pagePath = "/1-million-vs-2-million-retirement";
 const calculatorPath = "/compound-interest-calculator";
 
 const metaTitle =
-  "$1 Million vs $2 Million for Retirement: How Big Is the Difference?";
+  "$1 Million vs $2 Million for Retirement — The Gap Between Enough and Flexible";
 const pageTitle =
-  "$1 Million vs $2 Million for Retirement: How Big Is the Difference?";
+  "$1 Million vs $2 Million for Retirement — The Gap Between Enough and Flexible";
+
 const pageDescription =
   "Compare $1 million vs $2 million for retirement. See how much income each portfolio may generate and what kind of retirement lifestyle each one can realistically support.";
 
@@ -26,72 +26,95 @@ const rows = [
     benchmark: "$1 million at 4%",
     yearlyIncome: "$40,000",
     monthlyIncome: "$3,333",
-    view: "Modest retirement with limited flexibility.",
+    view: "A modest retirement income that may work with low costs, stable housing, and disciplined spending.",
   },
   {
     benchmark: "$2 million at 4%",
     yearlyIncome: "$80,000",
     monthlyIncome: "$6,667",
-    view: "Much stronger retirement with more breathing room.",
+    view: "A much stronger retirement base with more flexibility, more cushion, and less pressure from surprises.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Is $2 million twice as good as $1 million for retirement?",
+    answer:
+      "Not exactly. The income may roughly double at the same withdrawal rate, but the real difference is margin. $2 million can make housing, healthcare, travel, inflation, and market volatility easier to absorb.",
+  },
+  {
+    question: "Can you retire with $1 million?",
+    answer:
+      "Yes, but it depends heavily on your expenses, location, debt, taxes, healthcare costs, and withdrawal rate. $1 million can work well for some retirees, but it usually leaves less room for error than $2 million.",
+  },
+  {
+    question: "How much monthly income can $2 million generate?",
+    answer:
+      "At a 4% withdrawal rate, $2 million may support about $80,000 per year, or around $6,667 per month before taxes. A lower withdrawal rate would produce less income but may create more safety.",
+  },
+  {
+    question: "Why does $2 million feel so different from $1 million?",
+    answer:
+      "Because retirement is not tested only by average months. It is tested by inflation, healthcare costs, market downturns, home repairs, family needs, and years when spending is higher than expected.",
   },
 ];
 
 export default function Page() {
   return (
-    <main className={styles.page}>
-      <article className={styles.article}>
-        <header className={styles.hero}>
-          <div className={styles.eyebrow}>Retirement comparison</div>
+    <main className="cw-page">
+      <article className="cw-shell">
+        <header className="cw-hero">
+          <div className="cw-eyebrow">Retirement portfolio comparison</div>
 
-          <h1 className={styles.title}>{pageTitle}</h1>
+          <h1 className="cw-title">{pageTitle}</h1>
 
-          <p className={styles.lead}>
-            The difference between $1 million and $2 million in retirement is not
-            just mathematical. It can completely change how secure and flexible
-            retirement feels.
+          <p className="cw-lead">
+            The difference between $1 million and $2 million in retirement is
+            not just mathematical. It can change how much pressure your
+            portfolio carries every month.
           </p>
 
-          <p className={styles.intro}>
-            Both numbers sound substantial, but the income gap between them is
-            enormous. A larger portfolio does not just increase spending power.
-            It also gives you more margin for inflation, volatility, and bad
-            market years.
+          <p className="cw-intro">
+            Both numbers sound substantial. But the retirement experience can be
+            completely different. A $1 million portfolio may support a modest
+            plan when expenses are controlled. A $2 million portfolio usually
+            creates more room for housing, healthcare, travel, inflation, and
+            imperfect years.
           </p>
 
-          <p className={styles.intro}>
-            This is why many people discover that $1 million may be enough to
-            retire, while $2 million often feels much closer to a genuinely
-            comfortable retirement.
+          <p className="cw-intro">
+            The math is simple. Living with it is not.
           </p>
 
-          <div className={styles.highlight}>
-            <p className={styles.highlightText}>
-              <strong>Key insight:</strong> doubling your portfolio from $1
-              million to $2 million can do far more than double confidence. It
-              can shift retirement from tight to flexible.
+          <div className="cw-highlight">
+            <p className="cw-highlight-text">
+              <strong>Key insight:</strong> $1 million may be enough for a lean
+              or carefully managed retirement. $2 million usually moves the plan
+              closer to comfort, flexibility, and long-term resilience.
             </p>
           </div>
 
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
+          <div className="cw-hero-actions">
+            <Link href={calculatorPath} className="cw-button">
               Compare Your Retirement Number →
             </Link>
           </div>
         </header>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Income difference: $1 million vs $2 million
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            The income gap is where the difference becomes real
           </h2>
 
-          <p className={styles.paragraph}>
-            The clearest way to compare these two retirement benchmarks is to
-            look at the income they may support under the same withdrawal
-            strategy.
+          <p className="cw-paragraph">
+            The clearest way to compare $1 million and $2 million is to look at
+            the income each portfolio may support under the same withdrawal
+            strategy. At a 4% withdrawal rate, the difference is roughly $40,000
+            per year.
           </p>
 
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
+          <div className="cw-table-wrap">
+            <table className="cw-table">
               <thead>
                 <tr>
                   <th>Portfolio</th>
@@ -103,7 +126,7 @@ export default function Page() {
               <tbody>
                 {rows.map((row) => (
                   <tr key={row.benchmark}>
-                    <td className={styles.tableCellStrong}>{row.benchmark}</td>
+                    <td>{row.benchmark}</td>
                     <td>{row.yearlyIncome}</td>
                     <td>{row.monthlyIncome}</td>
                     <td>{row.view}</td>
@@ -113,156 +136,215 @@ export default function Page() {
             </table>
           </div>
 
-          <p className={styles.paragraph}>
-            At a 4% withdrawal rate, the jump from $1 million to $2 million means
-            moving from about $3,333 a month to about $6,667 a month before
-            taxes.
+          <p className="cw-paragraph">
+            Moving from about $3,333 a month to about $6,667 a month before
+            taxes can change the entire shape of retirement. It may affect where
+            you can live, how much you can travel, how easily you can absorb
+            healthcare costs, and how much stress weak market years create.
           </p>
 
-          <p className={styles.paragraph}>
-            That is not a small upgrade. It can change where you can live, how
-            much you can spend, and how much financial pressure your portfolio
-            faces over time.
+          <p className="cw-paragraph">
+            The number looks bigger. The pressure behind it matters more.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            What $1 million usually feels like in retirement
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            What $1 million usually means in real life
           </h2>
 
-          <p className={styles.paragraph}>
-            A $1 million portfolio can support retirement in some cases, but it
-            often comes with tighter spending rules and less room for error.
+          <p className="cw-paragraph">
+            A $1 million portfolio can support retirement in the right
+            situation. It works best when housing is stable, debt is low,
+            healthcare costs are manageable, and lifestyle expectations stay
+            realistic.
           </p>
 
-          <ul className={styles.list}>
-            <li>More sensitive to higher living costs</li>
-            <li>Less flexibility for travel or discretionary spending</li>
-            <li>More pressure during weak market periods</li>
-            <li>Lower margin for inflation and unexpected expenses</li>
+          <ul className="cw-list">
+            <li>more sensitivity to housing and healthcare costs.</li>
+            <li>less room for travel and discretionary spending.</li>
+            <li>more pressure during weak market periods.</li>
+            <li>lower margin for inflation and unexpected expenses.</li>
+            <li>greater need for disciplined withdrawals.</li>
           </ul>
 
-          <p className={styles.paragraph}>
-            For some retirees, it works well. For others, it feels like a modest
-            starting point rather than a strong finish line.
+          <p className="cw-paragraph">
+            For some retirees, $1 million works well. For others, it feels like
+            a strong starting point but not a comfortable finish line. The same
+            number can feel secure in a low-cost area and fragile in a
+            high-cost one.
+          </p>
+
+          <p className="cw-paragraph">
+            A portfolio can look strong on paper and still feel tight in real
+            life.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Why $2 million feels dramatically different
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Why $2 million changes the retirement equation
           </h2>
 
-          <p className={styles.paragraph}>
-            A $2 million portfolio does not just increase income. It often
-            changes the entire structure of retirement.
+          <p className="cw-paragraph">
+            A $2 million portfolio does not just create more income. It gives
+            the plan more room to breathe. That extra room can reduce the need
+            to cut spending quickly when markets fall, healthcare costs rise, or
+            inflation makes ordinary expenses heavier.
           </p>
 
-          <p className={styles.paragraph}>
-            With more income and more buffer, you can stay more conservative
-            without sacrificing as much lifestyle. That can make retirement feel
-            much more stable, especially over long periods.
+          <ul className="cw-list">
+            <li>more monthly income at the same withdrawal rate.</li>
+            <li>stronger cushion against inflation and surprises.</li>
+            <li>more flexibility for housing, travel, and healthcare.</li>
+            <li>less pressure to chase aggressive returns.</li>
+            <li>more ability to preserve lifestyle through bad years.</li>
+          </ul>
+
+          <p className="cw-paragraph">
+            With $2 million, you may be able to stay more conservative without
+            giving up as much lifestyle. That is one of the most underrated
+            advantages. More money can mean more choices, but it can also mean
+            less need to take uncomfortable risks.
           </p>
 
-          <p className={styles.paragraph}>
-            In practical terms, $2 million often creates the difference between a
-            retirement that feels tight and one that feels genuinely workable.
+          <p className="cw-paragraph">
+            More wealth is useful when it removes forced decisions.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            The real lesson behind this comparison
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            The real lesson is not just doubling the money
           </h2>
 
-          <p className={styles.paragraph}>
-            The most important takeaway is that retirement quality does not rise
-            in a smooth, linear way. Certain portfolio thresholds can create much
-            bigger lifestyle and durability differences than people expect.
+          <p className="cw-paragraph">
+            Retirement quality does not always rise in a smooth, linear way.
+            Some thresholds matter more than others because they change the
+            relationship between income, risk, and lifestyle.
           </p>
 
-          <p className={styles.paragraph}>
-            That is why comparing retirement benchmarks matters. It helps you see
-            whether you are aiming for bare sufficiency or real flexibility.
+          <p className="cw-paragraph">
+            The jump from $1 million to $2 million is one of those thresholds.
+            It can move a plan from “possible if managed carefully” to “much
+            more flexible if structured well.”
           </p>
 
-          <p className={styles.paragraph}>
-            The jump from $1 million to $2 million is one of the clearest
-            examples of that effect.
+          <p className="cw-paragraph">
+            Net worth is not the goal. What it produces is.
           </p>
         </section>
 
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
+        <section className="cw-section">
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
               See what your portfolio can actually support
             </h2>
-            <p className={styles.ctaText}>
-              Use the calculator to compare retirement income targets, withdrawal
-              strategies, and portfolio levels based on your own goals.
+
+            <p className="cw-cta-text">
+              Use the calculator to compare savings, returns, timelines, and
+              retirement income targets based on your own assumptions.
             </p>
-            <Link href={calculatorPath} className={styles.ctaButton}>
-              Use the Calculator →
-            </Link>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Use the Calculator →
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Explore related scenarios</h2>
-          <ul className={styles.list}>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Explore related retirement paths
+          </h2>
+
+          <ul className="cw-list">
             <li>
-              <Link href="/is-1-million-enough-to-retire">
-                Is $1 million enough to retire?
-              </Link>
-            </li>
-            <li>
-              <Link href="/is-2-million-enough-to-retire">
-                Is $2 million enough to retire?
+              <Link href="/how-much-income-can-1-million-generate">
+                how much income can $1 million generate.
               </Link>
             </li>
             <li>
               <Link href="/2-million-vs-3-million-retirement">
-                $2 million vs $3 million for retirement
+                $2 million vs $3 million for retirement.
               </Link>
             </li>
             <li>
-              <Link href="/how-much-income-can-1-million-generate">
-                How much income can $1 million generate?
+              <Link href="/3-million-vs-5-million-retirement">
+                $3 million vs $5 million for retirement.
+              </Link>
+            </li>
+            <li>
+              <Link href="/how-much-net-worth-to-retire">
+                how much net worth you need to retire.
+              </Link>
+            </li>
+            <li>
+              <Link href="/safe-withdrawal-rate-for-retirement">
+                safe withdrawal rate for retirement.
               </Link>
             </li>
             <li>
               <Link href={calculatorPath}>
-                Calculate your retirement income potential
+                compound interest calculator.
               </Link>
             </li>
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Final takeaway</h2>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            FAQ: what people usually ask next
+          </h2>
 
-          <p className={styles.paragraph}>
-            $1 million and $2 million can both support retirement, but they often
-            produce very different outcomes in real life.
-          </p>
-
-          <p className={styles.paragraph}>
-            The smaller benchmark may work for a modest retirement. The larger
-            benchmark often creates much more flexibility, resilience, and peace
-            of mind.
-          </p>
-
-          <p className={styles.paragraph}>
-            The smartest question is not which number sounds better. It is which
-            one creates the retirement you actually want to live.
-          </p>
-
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
-              Run Your Numbers →
-            </Link>
+          <div className="cw-faq-list">
+            {faqItems.map((item) => (
+              <div key={item.question} className="cw-faq-item">
+                <h3 className="cw-faq-question">{item.question}</h3>
+                <p className="cw-faq-answer">{item.answer}</p>
+              </div>
+            ))}
           </div>
+        </section>
+
+        <section className="cw-section">
+          <h2 className="cw-section-title">Final perspective</h2>
+
+          <p className="cw-paragraph">
+            $1 million and $2 million can both support retirement, but they
+            often produce very different outcomes in real life. One may require
+            tighter decisions. The other usually creates more margin, more
+            flexibility, and more room for imperfect years.
+          </p>
+
+          <p className="cw-paragraph">
+            The smartest question is not which number sounds better. It is which
+            number can support the retirement you actually want without putting
+            too much pressure on the portfolio.
+          </p>
+
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
+              Want to test your own retirement number?
+            </h2>
+
+            <p className="cw-cta-text">
+              Estimate how your savings, timeline, and return assumptions could
+              translate into monthly retirement income.
+            </p>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Run Your Numbers →
+              </Link>
+            </div>
+          </div>
+
+          <p className="cw-support-note">
+            This project is built independently. If it gave you clarity or
+            direction, you’re welcome to support it. ☕ & ❤️
+          </p>
         </section>
       </article>
     </main>

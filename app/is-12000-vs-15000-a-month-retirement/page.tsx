@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import styles from "./page.module.css";
 
-const siteUrl = "https://yoursite.com";
+const siteUrl = "https://scalemonthly.com";
 const pagePath = "/is-12000-vs-15000-a-month-retirement";
 const calculatorPath = "/compound-interest-calculator";
 
 const metaTitle =
-  "$12,000 vs $15,000 a Month in Retirement: What Changes?";
-
+  "$12,000 vs $15,000 a Month in Retirement — The Margin Between Premium and Easier";
 const pageTitle =
-  "$12,000 vs $15,000 a Month in Retirement: What Changes?";
+  "$12,000 vs $15,000 a Month in Retirement — The Margin Between Premium and Easier";
 
 const pageDescription =
-  "Compare retiring on $12,000 vs $15,000 a month. See how lifestyle, housing, healthcare, and long-term retirement flexibility can change across these two high-income retirement levels.";
+  "Compare retiring on $12,000 vs $15,000 a month. See how lifestyle, housing, healthcare, travel, flexibility, and long-term retirement resilience can change across these high-income levels.";
 
 export const metadata: Metadata = {
   title: metaTitle,
@@ -29,229 +27,345 @@ const comparisonRows = [
     twelveK:
       "$12,000 a month can support a premium retirement lifestyle in many situations, with strong flexibility and substantial room for discretionary spending.",
     fifteenK:
-      "$15,000 a month usually supports an even more comfortable retirement lifestyle with greater margin, stronger resilience, and more day-to-day freedom.",
+      "$15,000 a month usually feels easier to sustain, with more day-to-day freedom, fewer compromises, and stronger room for lifestyle choices.",
   },
   {
     category: "Housing flexibility",
     twelveK:
-      "Housing choices are already very strong, but expensive markets can still reduce flexibility or create tradeoffs over time.",
+      "Housing choices are already very strong, but expensive markets, upgrades, taxes, or better locations can still create trade-offs.",
     fifteenK:
-      "More room for higher-end housing options, stronger location flexibility, or better protection against rising housing costs.",
+      "Creates more room for higher-end housing options, stronger location flexibility, or better protection against rising housing costs.",
   },
   {
     category: "Healthcare impact",
     twelveK:
-      "Healthcare costs are usually manageable, but major medical expenses can still reshape part of the budget.",
+      "Healthcare costs are usually manageable, but major medical expenses, private care, or recurring needs can still reshape part of the budget.",
     fifteenK:
-      "A higher income level creates more room to absorb healthcare costs without changing the broader retirement plan.",
+      "Creates more room to absorb healthcare costs without forcing the broader retirement plan to give up travel, comfort, or flexibility.",
+  },
+  {
+    category: "Travel and leisure",
+    twelveK:
+      "Travel can be frequent and comfortable, but larger trips may still require timing, planning, and prioritization.",
+    fifteenK:
+      "Travel becomes easier to maintain, with more room for better trips, longer stays, family visits, and fewer budget trade-offs.",
   },
   {
     category: "Financial cushion",
     twelveK:
-      "Provides a strong cushion for many retirees, though larger surprises can still affect travel, lifestyle, or long-term flexibility.",
+      "Provides a strong cushion, though inflation, taxes, repairs, medical surprises, and larger goals still matter over time.",
     fifteenK:
-      "Usually creates a wider cushion for inflation, travel, lifestyle upgrades, and unexpected expenses.",
+      "Usually creates a wider cushion for inflation, lifestyle upgrades, healthcare surprises, family support, and uneven spending years.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Is $15,000 a month a big upgrade from $12,000 in retirement?",
+    answer:
+      "It can be. The extra $3,000 a month is not usually about basic comfort. It is about margin. It can make housing, healthcare, travel, family support, inflation, and unexpected expenses easier to absorb.",
+  },
+  {
+    question: "Can $12,000 a month already support a premium retirement?",
+    answer:
+      "Yes. $12,000 a month can support a premium retirement in many areas, especially with stable housing, low debt, and controlled healthcare costs. The question is how much flexibility remains after expensive categories are included.",
+  },
+  {
+    question: "What changes most at $15,000 a month?",
+    answer:
+      "The biggest change is ease. More parts of the retirement plan can operate comfortably at the same time without forcing as many trade-offs between housing, travel, healthcare, and long-term security.",
+  },
+  {
+    question: "Does $15,000 a month make retirement risk-free?",
+    answer:
+      "No. Higher income helps, but taxes, inflation, healthcare, withdrawal strategy, market conditions, and lifestyle creep still matter. A bigger income still needs a disciplined plan.",
   },
 ];
 
 export default function Page() {
   return (
-    <main className={styles.page}>
-      <article className={styles.article}>
-        <header className={styles.hero}>
-          <div className={styles.eyebrow}>Retirement income comparison</div>
+    <main className="cw-page">
+      <article className="cw-shell">
+        <header className="cw-hero">
+          <div className="cw-eyebrow">Retirement income comparison</div>
 
-          <h1 className={styles.title}>{pageTitle}</h1>
+          <h1 className="cw-title">{pageTitle}</h1>
 
-          <p className={styles.lead}>
+          <p className="cw-lead">
             The difference between $12,000 and $15,000 a month in retirement is
-            not just about income. It is about how much more freedom your plan
-            has after essential expenses are covered.
+            not about moving from struggling to comfortable. Both numbers can be
+            strong. The difference is how much easier the plan feels when
+            expensive categories show up at the same time.
           </p>
 
-          <p className={styles.intro}>
-            $12,000 a month can already support a very strong retirement in many
-            areas. But $15,000 a month usually creates more room for housing,
-            healthcare, travel, and larger unexpected costs.
+          <p className="cw-intro">
+            $12,000 a month can already support a high-quality retirement in
+            many areas. It can create strong housing choices, travel freedom,
+            healthcare flexibility, and a lifestyle that feels well above basic
+            comfort.
           </p>
 
-          <p className={styles.intro}>
-            The real question is not which number sounds better. It is how much
-            stability, flexibility, and long-term comfort each level can
-            realistically support.
+          <p className="cw-intro">
+            $15,000 a month adds a different layer. It gives the plan more room
+            to protect lifestyle, absorb uneven years, and handle rising costs
+            without making every decision feel like a trade-off.
           </p>
 
-          <div className={styles.highlight}>
-            <p className={styles.highlightText}>
-              <strong>Key insight:</strong> $12,000 a month can support a strong
-              retirement, while $15,000 a month usually creates a wider
-              cushion, stronger flexibility, and less pressure from rising
-              costs.
+          <div className="cw-highlight">
+            <p className="cw-highlight-text">
+              <strong>Key insight:</strong> $12,000 a month can feel premium.
+              $15,000 a month usually makes that premium lifestyle easier to
+              maintain when housing, healthcare, taxes, travel, and inflation
+              all start competing for space.
             </p>
           </div>
 
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
+          <div className="cw-hero-actions">
+            <Link href={calculatorPath} className="cw-button">
               Calculate Your Retirement Plan →
             </Link>
           </div>
         </header>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            $12,000 vs $15,000 a month in retirement: what changes
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            The difference shows up when several costs rise together
           </h2>
 
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
+          <p className="cw-paragraph">
+            At this income range, the comparison is not about whether retirement
+            works. It is about how durable the lifestyle feels when the plan is
+            tested by healthcare costs, property taxes, inflation, insurance,
+            travel, family support, or larger one-time expenses.
+          </p>
+
+          <p className="cw-paragraph">
+            The number looks strong. The pressure behind it still matters.
+          </p>
+
+          <div className="cw-table-wrap">
+            <table className="cw-table">
               <thead>
                 <tr>
-                  <th className={styles.tableHead}>Category</th>
-                  <th className={styles.tableHead}>$12,000 a month</th>
-                  <th className={styles.tableHead}>$15,000 a month</th>
+                  <th>Category</th>
+                  <th>$12,000 a month</th>
+                  <th>$15,000 a month</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonRows.map((row) => (
                   <tr key={row.category}>
-                    <td className={styles.tableCellStrong}>{row.category}</td>
-                    <td className={styles.tableCell}>{row.twelveK}</td>
-                    <td className={styles.tableCell}>{row.fifteenK}</td>
+                    <td>{row.category}</td>
+                    <td>{row.twelveK}</td>
+                    <td>{row.fifteenK}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <p className={styles.paragraph}>
-            Both income levels can support retirement very well. The real
-            difference is how much margin you have once housing, healthcare, and
-            daily living costs are fully accounted for.
+          <p className="cw-paragraph">
+            A $3,000 monthly difference becomes $36,000 per year. Over a long
+            retirement, that can help protect travel, absorb healthcare
+            surprises, reduce inflation pressure, support family needs, or
+            simply make the plan feel less tight in expensive years.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            When $12,000 a month can still be enough
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Why $12,000 a month can already feel premium
           </h2>
 
-          <ul className={styles.list}>
-            <li>high cost of living areas</li>
-            <li>stable housing expenses</li>
-            <li>manageable healthcare costs</li>
-            <li>limited debt and fixed costs</li>
-            <li>premium retirement expectations</li>
+          <p className="cw-paragraph">
+            $12,000 a month is already a high retirement income level for many
+            households. It can support a comfortable lifestyle with strong
+            housing, healthcare flexibility, travel, leisure, and room for
+            discretionary spending.
+          </p>
+
+          <ul className="cw-list">
+            <li>high cost-of-living areas with planning.</li>
+            <li>stable housing expenses.</li>
+            <li>manageable healthcare costs.</li>
+            <li>limited debt and controlled fixed costs.</li>
+            <li>premium but realistic retirement expectations.</li>
           </ul>
 
-          <p className={styles.paragraph}>
-            In these conditions, $12,000 a month can support a comfortable and
-            flexible retirement. But $15,000 a month still creates a wider
-            cushion, which can reduce pressure over time.
+          <p className="cw-paragraph">
+            In these conditions, $12,000 a month can feel excellent. The risk is
+            assuming the income is so strong that the plan no longer needs
+            discipline. Premium housing, taxes, healthcare, and lifestyle creep
+            can still compress the margin.
+          </p>
+
+          <p className="cw-paragraph">
+            A premium income can still become fragile if the lifestyle outruns
+            the plan.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Where $15,000 a month creates a clear advantage
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Where $15,000 a month creates the easier version
           </h2>
 
-          <p className={styles.paragraph}>
-            The biggest benefit is flexibility. A higher monthly income makes it
-            easier to absorb housing changes, healthcare costs, inflation, and
-            unexpected expenses without cutting lifestyle quality too quickly.
+          <p className="cw-paragraph">
+            $15,000 a month does not necessarily create a completely different
+            life from $12,000. It often creates a less pressured version of that
+            life. More categories can stay strong at the same time without
+            forcing immediate cuts elsewhere.
           </p>
 
-          <ul className={styles.list}>
-            <li>more room for higher-end housing options</li>
-            <li>better resilience against healthcare costs</li>
-            <li>greater freedom for travel and leisure</li>
-            <li>stronger protection against inflation pressure</li>
+          <ul className="cw-list">
+            <li>more room for higher-end housing options.</li>
+            <li>better resilience against healthcare costs.</li>
+            <li>greater freedom for travel and leisure.</li>
+            <li>stronger protection against inflation pressure.</li>
+            <li>more flexibility for family support or larger goals.</li>
           </ul>
 
-          <p className={styles.paragraph}>
-            That wider cushion can make retirement feel more stable, less
-            restrictive, and easier to maintain over the long term.
+          <p className="cw-paragraph">
+            That extra margin can make retirement feel more stable, less
+            restrictive, and easier to maintain over decades. The formula is
+            simple. The outcome is not.
           </p>
         </section>
 
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            More income should reduce risk, not just raise spending
+          </h2>
+
+          <p className="cw-paragraph">
+            At higher income levels, the planning standard changes. The goal is
+            not only to afford a better lifestyle. It is to make sure that
+            taxes, withdrawals, market cycles, healthcare, and inflation do not
+            quietly weaken the plan underneath.
+          </p>
+
+          <p className="cw-paragraph">
+            More income today can mean less pressure tomorrow.
+          </p>
+
+          <p className="cw-paragraph">
+            Used wisely, the extra $3,000 a month can become a protection layer.
+            Used carelessly, it can disappear into lifestyle creep and leave the
+            plan looking better than it actually feels.
+          </p>
+        </section>
+
+        <section className="cw-section">
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
               Compare your own retirement income plan
             </h2>
-            <p className={styles.ctaText}>
-              Use the calculator to test different savings, return, and
-              withdrawal assumptions and see what monthly income your portfolio
-              may realistically support.
+
+            <p className="cw-cta-text">
+              Use the calculator to test savings, return assumptions, timelines,
+              and income targets so you can see what your portfolio may
+              realistically support.
             </p>
-            <Link href={calculatorPath} className={styles.ctaButton}>
-              Test Your Retirement Income →
-            </Link>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Test Your Retirement Income →
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Explore related retirement scenarios
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Explore nearby high-income retirement paths
           </h2>
 
-          <ul className={styles.list}>
+          <ul className="cw-list">
             <li>
-              <Link
-                href="/is-10000-vs-12000-a-month-retirement"
-                className={styles.bottomCtaLink}
-              >
-                $10,000 vs $12,000 a month in retirement
+              <Link href="/is-12000-a-month-enough-to-retire">
+                is $12,000 a month enough to retire.
               </Link>
             </li>
             <li>
-              <Link
-                href="/is-10000-a-month-enough-to-retire"
-                className={styles.bottomCtaLink}
-              >
-                Is $10,000 a month enough to retire
+              <Link href="/is-15000-a-month-enough-to-retire">
+                is $15,000 a month enough to retire.
               </Link>
             </li>
             <li>
-              <Link
-                href="/is-10000-a-month-enough-to-retire"
-                className={styles.bottomCtaLink}
-              >
-                Is $10,000 a month enough to retire
+              <Link href="/is-10000-vs-12000-a-month-retirement">
+                $10,000 vs $12,000 a month retirement.
               </Link>
             </li>
             <li>
-              <Link href={calculatorPath} className={styles.bottomCtaLink}>
-                Compound interest calculator
+              <Link href="/is-10000-vs-15000-a-month-retirement">
+                $10,000 vs $15,000 a month retirement.
               </Link>
+            </li>
+            <li>
+              <Link href="/net-worth-needed-to-retire-with-12000-a-month">
+                net worth needed to retire with $12,000 a month.
+              </Link>
+            </li>
+            <li>
+              <Link href="/net-worth-needed-to-retire-with-15000-a-month">
+                net worth needed to retire with $15,000 a month.
+              </Link>
+            </li>
+            <li>
+              <Link href={calculatorPath}>compound interest calculator.</Link>
             </li>
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Final takeaway</h2>
+        <section className="cw-section">
+          <h2 className="cw-section-title">FAQ: questions worth asking next</h2>
 
-          <p className={styles.paragraph}>
+          <div className="cw-faq-list">
+            {faqItems.map((item) => (
+              <div key={item.question} className="cw-faq-item">
+                <h3 className="cw-faq-question">{item.question}</h3>
+                <p className="cw-faq-answer">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="cw-section">
+          <h2 className="cw-section-title">Final perspective</h2>
+
+          <p className="cw-paragraph">
             $12,000 and $15,000 a month can both support retirement very well,
             but they do not create the same level of flexibility or protection.
-            One gives you a strong base. The other usually gives you even more
-            breathing room.
+            One can feel premium. The other usually makes that premium lifestyle
+            easier to defend.
           </p>
 
-          <p className={styles.paragraph}>
-            The best move is to estimate how much monthly income your savings
-            can realistically support, then match that number to the retirement
-            lifestyle you actually want.
+          <p className="cw-paragraph">
+            The smartest move is not to assume the higher number automatically
+            solves everything. It is to compare the fixed costs, lifestyle
+            expectations, taxes, healthcare risk, and withdrawal pressure behind
+            both income levels.
           </p>
 
-          <div className={styles.bottomCta}>
-            <p className={styles.bottomCtaText}>
-              Want to test your own numbers?
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">Want to test your own numbers?</h2>
+
+            <p className="cw-cta-text">
+              Use the calculator to estimate how your savings, contributions,
+              returns, and timeline could shape your future retirement income.
             </p>
-            <Link href={calculatorPath} className={styles.bottomCtaLink}>
-              Calculate now →
-            </Link>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Calculate now →
+              </Link>
+            </div>
           </div>
+
+          <p className="cw-support-note">
+            This project is built independently. If it gave you clarity or
+            direction, you’re welcome to support it. ☕ & ❤️
+          </p>
         </section>
       </article>
     </main>

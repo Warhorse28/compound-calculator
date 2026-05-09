@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import styles from "./page.module.css";
 
-const siteUrl = "https://yoursite.com";
+const siteUrl = "https://scalemonthly.com";
 const pagePath = "/is-50000-vs-60000-a-month-retirement";
 const calculatorPath = "/compound-interest-calculator";
 
 const metaTitle =
-  "$50,000 vs $60,000 a Month in Retirement: Is the Difference Really Noticeable?";
+  "$50,000 vs $60,000 a Month in Retirement — The Final Layer of Financial Space";
 const pageTitle =
-  "$50,000 vs $60,000 a Month in Retirement: Is the Difference Really Noticeable?";
+  "$50,000 vs $60,000 a Month in Retirement — The Final Layer of Financial Space";
+
 const pageDescription =
-  "Compare $50k vs $60k a month in retirement. See how lifestyle, luxury, flexibility, and long-term financial margin change at the highest income levels.";
+  "Compare $50,000 vs $60,000 a month in retirement. See how lifestyle, luxury, housing, healthcare, travel, taxes, flexibility, and long-term financial margin change at the highest income levels.";
 
 export const metadata: Metadata = {
   title: metaTitle,
@@ -21,273 +21,360 @@ export const metadata: Metadata = {
   },
 };
 
+const comparisonRows = [
+  {
+    category: "Lifestyle feel",
+    fiftyK:
+      "$50,000 a month already creates an elite retirement with exceptional flexibility, very low financial pressure, and almost no practical lifestyle constraints.",
+    sixtyK:
+      "$60,000 a month usually adds one more layer of financial space, making already-premium choices feel even easier to sustain over time.",
+  },
+  {
+    category: "Housing options",
+    fiftyK:
+      "Top-tier housing is already realistic in many premium markets, including luxury properties, major upgrades, and strong location flexibility.",
+    sixtyK:
+      "Adds more room for the most expensive locations, larger properties, second homes, renovations, and higher carrying costs without pressure elsewhere.",
+  },
+  {
+    category: "Healthcare comfort",
+    fiftyK:
+      "Premium healthcare flexibility is already strong, with room for private care, strong coverage, and larger long-term expenses.",
+    sixtyK:
+      "Healthcare becomes even easier to absorb, with more room for premium services, large contingencies, long-term care, and specialized support.",
+  },
+  {
+    category: "Travel and lifestyle",
+    fiftyK:
+      "Luxury travel is already realistic, including frequent trips, stronger accommodations, extended stays, and much more spontaneity.",
+    sixtyK:
+      "Travel can scale further, with more premium upgrades, longer stays, family trips, global mobility, and less concern about total cost.",
+  },
+  {
+    category: "Financial margin",
+    fiftyK:
+      "Extremely strong long-term margin already exists, with high resilience against inflation, market shocks, taxes, and unexpected costs.",
+    sixtyK:
+      "Creates an even wider buffer, making retirement more durable, more insulated, and easier to sustain at a very high standard for decades.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Is $60,000 a month meaningfully better than $50,000 in retirement?",
+    answer:
+      "Yes, but the difference is refined rather than dramatic. $50,000 a month already supports an elite retirement. $60,000 a month adds more room for taxes, healthcare, real estate, family support, luxury travel, and long-term wealth preservation.",
+  },
+  {
+    question: "Can $50,000 a month already support an ultra-high-end retirement?",
+    answer:
+      "Yes. $50,000 a month can support elite housing, luxury travel, premium healthcare, and very low day-to-day financial pressure in many situations.",
+  },
+  {
+    question: "What changes most at $60,000 a month?",
+    answer:
+      "The biggest change is extra scale. The lifestyle may not look completely different, but the plan has more room to absorb expensive years, larger choices, family support, taxes, and long-term care without disruption.",
+  },
+  {
+    question: "Does $60,000 a month remove the need for financial discipline?",
+    answer:
+      "No. Taxes, inflation, market cycles, withdrawals, healthcare costs, estate planning, family obligations, and lifestyle expansion still matter. At this level, the mistakes can simply become larger.",
+  },
+];
+
 export default function Page() {
   return (
-    <main className={styles.page}>
-      <article className={styles.article}>
-        <header className={styles.hero}>
-          <div className={styles.eyebrow}>Retirement income comparison</div>
+    <main className="cw-page">
+      <article className="cw-shell">
+        <header className="cw-hero">
+          <div className="cw-eyebrow">Retirement income comparison</div>
 
-          <h1 className={styles.title}>{pageTitle}</h1>
+          <h1 className="cw-title">{pageTitle}</h1>
 
-          <p className={styles.lead}>
+          <p className="cw-lead">
             The move from $50,000 to $60,000 a month in retirement is not about
             going from comfortable to possible. Both levels already support an
             ultra-high-end retirement. The real question is whether the extra
-            $10,000 meaningfully changes how retirement feels at the margin.
+            $10,000 creates meaningful space at the margin.
           </p>
 
-          <p className={styles.intro}>
+          <p className="cw-intro">
             At $50,000 a month, most retirees already have access to premium
             housing, luxury travel, strong healthcare flexibility, and very low
-            day-to-day financial pressure. In many situations, that is already a
-            level where money stops acting like a practical limit.
+            day-to-day financial pressure. In many situations, money has already
+            stopped acting like a practical limit.
           </p>
 
-          <p className={styles.intro}>
+          <p className="cw-intro">
             At $60,000 a month, the difference is usually not a lifestyle
             transformation. It is more about added scale, a wider buffer, and
-            the ability to make already-expensive choices feel even easier over
+            the ability to make already-expensive choices feel even lighter over
             a long retirement.
           </p>
 
-          <div className={styles.highlight}>
-            <p className={styles.highlightText}>
+          <div className="cw-highlight">
+            <p className="cw-highlight-text">
               <strong>Key insight:</strong> $50,000 a month already creates an
-              elite retirement with very few constraints, but $60,000 a month
-              usually adds a larger cushion, more room for luxury, and even more
-              freedom across top-tier categories.
+              elite retirement with very few constraints. $60,000 a month
+              usually adds a quieter layer of protection, scale, and long-term
+              financial space.
             </p>
           </div>
 
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
+          <div className="cw-hero-actions">
+            <Link href={calculatorPath} className="cw-button">
               Calculate Your Retirement Plan →
             </Link>
           </div>
         </header>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            $50k vs $60k a month: side-by-side breakdown
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            The upgrade is real, but it shows up at the margin
           </h2>
 
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th className={styles.tableHead}>Category</th>
-                  <th className={styles.tableHead}>$50,000 a month</th>
-                  <th className={styles.tableHead}>$60,000 a month</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className={styles.tableCellStrong}>Lifestyle feel</td>
-                  <td className={styles.tableCell}>
-                    Elite retirement with maximum flexibility and almost no
-                    practical financial constraints.
-                  </td>
-                  <td className={styles.tableCell}>
-                    Even wider and more open-ended retirement, with more scale,
-                    more margin, and even less friction around major decisions.
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className={styles.tableCellStrong}>Housing options</td>
-                  <td className={styles.tableCell}>
-                    Top-tier housing in many premium markets, including luxury
-                    properties and high-end upgrades.
-                  </td>
-                  <td className={styles.tableCell}>
-                    Slightly wider access to the most expensive locations,
-                    larger properties, second homes, and more aggressive luxury
-                    choices without affecting the rest of the plan.
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className={styles.tableCellStrong}>Healthcare comfort</td>
-                  <td className={styles.tableCell}>
-                    Premium healthcare flexibility with room for strong coverage,
-                    private care, and larger long-term expenses.
-                  </td>
-                  <td className={styles.tableCell}>
-                    Healthcare becomes even easier to absorb, with more room for
-                    premium services, larger contingencies, and virtually no
-                    pressure from high-cost care decisions.
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className={styles.tableCellStrong}>Travel & lifestyle</td>
-                  <td className={styles.tableCell}>
-                    Luxury travel is already realistic, including frequent trips,
-                    stronger accommodations, and much more spontaneity.
-                  </td>
-                  <td className={styles.tableCell}>
-                    Travel can scale even further, with more premium upgrades,
-                    longer stays, more flexibility across destinations, and less
-                    need to think about the total cost.
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className={styles.tableCellStrong}>Financial margin</td>
-                  <td className={styles.tableCell}>
-                    Extremely strong long-term margin, with high resilience
-                    against inflation, market shocks, and unexpected costs.
-                  </td>
-                  <td className={styles.tableCell}>
-                    An even wider buffer that makes retirement feel more durable,
-                    more insulated, and easier to sustain at a premium standard
-                    for a very long time.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p className={styles.paragraph}>
+          <p className="cw-paragraph">
             Both income levels already support a rare level of retirement
             comfort. The main difference is not whether retirement feels good at
             all. It is how much more optionality and scale the extra income adds
             once most major constraints are already gone.
           </p>
+
+          <p className="cw-paragraph">
+            At this level, the lifestyle may look similar. The cushion behind it
+            does not.
+          </p>
+
+          <div className="cw-table-wrap">
+            <table className="cw-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>$50,000 a month</th>
+                  <th>$60,000 a month</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {comparisonRows.map((row) => (
+                  <tr key={row.category}>
+                    <td>{row.category}</td>
+                    <td>{row.fiftyK}</td>
+                    <td>{row.sixtyK}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="cw-paragraph">
+            Another $10,000 per month becomes another $120,000 per year. Over a
+            long retirement, that can improve tax flexibility, real estate
+            choices, healthcare resilience, family support, travel scale, and
+            the ability to preserve wealth through difficult market periods.
+          </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Where $50,000 a month already feels exceptional
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Why $50,000 a month already feels almost unconstrained
           </h2>
 
-          <ul className={styles.list}>
-            <li>elite housing options in premium markets</li>
-            <li>luxury travel with very high flexibility</li>
-            <li>strong protection against large healthcare costs</li>
-            <li>daily life with almost no practical financial pressure</li>
-            <li>retirement that already feels preference-based, not limit-based</li>
-          </ul>
-
-          <p className={styles.paragraph}>
-            This is why $50,000 a month is already such a powerful benchmark. It
+          <p className="cw-paragraph">
+            $50,000 a month is already such a powerful benchmark because it
             places retirement in a category where the conversation is no longer
             about managing expenses carefully. It becomes much more about
             structuring the kind of life you want.
           </p>
 
-          <p className={styles.paragraph}>
+          <ul className="cw-list">
+            <li>elite housing options in premium markets.</li>
+            <li>luxury travel with very high flexibility.</li>
+            <li>strong protection against large healthcare costs.</li>
+            <li>daily life with almost no practical financial pressure.</li>
+            <li>retirement that already feels preference-based, not limit-based.</li>
+          </ul>
+
+          <p className="cw-paragraph">
             That matters because the move to $60,000 is not a jump from weak to
             strong. It is a move from elite to even more insulated and scalable.
           </p>
+
+          <p className="cw-paragraph">
+            The higher the income, the quieter the improvement can look.
+          </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Is the difference really noticeable?
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Where the extra $10,000 still matters
           </h2>
 
-          <p className={styles.paragraph}>
-            Yes, but not in the same way that lower-income jumps are noticeable.
-            Moving from $5,000 to $10,000 or from $10,000 to $20,000 changes the
-            structure of retirement much more dramatically. Moving from $50,000
-            to $60,000 is more subtle.
+          <p className="cw-paragraph">
+            Yes, the difference is noticeable, but not in the same way that
+            lower-income jumps are noticeable. Moving from $5,000 to $10,000 or
+            from $10,000 to $20,000 can change the structure of retirement much
+            more dramatically. Moving from $50,000 to $60,000 is more subtle.
           </p>
 
-          <p className={styles.paragraph}>
-            The added value here usually shows up as extra margin, extra ease,
-            and extra scale. It can make already-premium choices feel lighter,
-            less risky, and easier to maintain over time.
+          <ul className="cw-list">
+            <li>more room for second homes and high carrying costs.</li>
+            <li>stronger flexibility around taxes and withdrawals.</li>
+            <li>larger buffer for long-term care and private healthcare.</li>
+            <li>more ability to support family or legacy goals.</li>
+            <li>more protection during weak markets or expensive years.</li>
+          </ul>
+
+          <p className="cw-paragraph">
+            The added value usually shows up as extra margin, extra ease, and
+            extra scale. It can make already-premium choices feel lighter, less
+            risky, and easier to maintain over time.
           </p>
 
-          <p className={styles.paragraph}>
-            In that sense, the difference is real, but it is mostly about
-            refinement. Retirement may not look completely different, but it can
-            feel even less constrained and even more resilient.
+          <p className="cw-paragraph">
+            At this level, the difference is not access. It is refinement.
           </p>
         </section>
 
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Ultra-high income still needs a durable structure
+          </h2>
+
+          <p className="cw-paragraph">
+            Very high retirement income can make risk feel distant, but risk
+            does not disappear. Taxes, inflation, healthcare costs, market
+            volatility, family obligations, real estate exposure, estate
+            planning, and lifestyle expansion still matter.
+          </p>
+
+          <p className="cw-paragraph">
+            A bigger number feels safer. It is not always safer.
+          </p>
+
+          <p className="cw-paragraph">
+            The strongest use of the extra $10,000 is not simply more spending.
+            It is more durability: more room to preserve capital, reduce forced
+            decisions, protect flexibility, and keep the retirement system
+            strong through decades of real life.
+          </p>
+        </section>
+
+        <section className="cw-section">
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
               Compare your own retirement target
             </h2>
-            <p className={styles.ctaText}>
+
+            <p className="cw-cta-text">
               Use the calculator to estimate how much monthly income your
               savings, timeline, and expected returns could realistically
               support.
             </p>
-            <Link href={calculatorPath} className={styles.ctaButton}>
-              Run Your Numbers →
-            </Link>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Run Your Numbers →
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Related pages</h2>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Explore nearby ultra-high retirement paths
+          </h2>
 
-          <ul className={styles.list}>
+          <ul className="cw-list">
             <li>
-              <Link
-                href="/is-50000-a-month-enough-to-retire"
-                className={styles.bottomCtaLink}
-              >
-                Is $50,000 a month enough to retire?
+              <Link href="/is-50000-a-month-enough-to-retire">
+                is $50,000 a month enough to retire.
               </Link>
             </li>
             <li>
-              <Link
-                href="/is-60000-a-month-enough-to-retire"
-                className={styles.bottomCtaLink}
-              >
-                Is $60,000 a month enough to retire?
+              <Link href="/is-60000-a-month-enough-to-retire">
+                is $60,000 a month enough to retire.
               </Link>
             </li>
             <li>
-              <Link
-                href="/is-40000-vs-60000-a-month-retirement"
-                className={styles.bottomCtaLink}
-              >
-                $40k vs $60k comparison
+              <Link href="/is-40000-vs-50000-a-month-retirement">
+                $40,000 vs $50,000 a month retirement.
               </Link>
             </li>
             <li>
-              <Link
-                href="/how-much-do-you-need-to-retire-with-60000-a-month"
-                className={styles.bottomCtaLink}
-              >
-                How much do you need for $60,000/month?
+              <Link href="/is-40000-vs-60000-a-month-retirement">
+                $40,000 vs $60,000 a month retirement.
               </Link>
+            </li>
+            <li>
+              <Link href="/net-worth-needed-to-retire-with-50000-a-month">
+                net worth needed to retire with $50,000 a month.
+              </Link>
+            </li>
+            <li>
+              <Link href="/net-worth-needed-to-retire-with-60000-a-month">
+                net worth needed to retire with $60,000 a month.
+              </Link>
+            </li>
+            <li>
+              <Link href={calculatorPath}>compound interest calculator.</Link>
             </li>
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Final takeaway</h2>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            FAQ: common questions at this income level
+          </h2>
 
-          <p className={styles.paragraph}>
+          <div className="cw-faq-list">
+            {faqItems.map((item) => (
+              <div key={item.question} className="cw-faq-item">
+                <h3 className="cw-faq-question">{item.question}</h3>
+                <p className="cw-faq-answer">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="cw-section">
+          <h2 className="cw-section-title">Final perspective</h2>
+
+          <p className="cw-paragraph">
             $50,000 a month already creates an elite retirement with very few
             meaningful limits. $60,000 a month usually does not transform that
-            lifestyle from the ground up, but it can make it even easier,
-            stronger, and more scalable over time.
+            lifestyle from the ground up, but it can make it easier, stronger,
+            and more scalable over time.
           </p>
 
-          <p className={styles.paragraph}>
+          <p className="cw-paragraph">
             The smartest way to judge the gap is not by the raw increase alone.
             It is by asking how much extra room, flexibility, and long-term
             durability the added income gives you once your retirement is
             already operating at a very high level.
           </p>
 
-          <div className={styles.bottomCta}>
-            <p className={styles.bottomCtaText}>
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
               Want to test your own retirement number?
+            </h2>
+
+            <p className="cw-cta-text">
+              Estimate how your savings, timeline, and projected returns could
+              translate into monthly retirement income.
             </p>
-            <Link href={calculatorPath} className={styles.bottomCtaLink}>
-              Calculate now →
-            </Link>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Calculate now →
+              </Link>
+            </div>
           </div>
+
+          <p className="cw-support-note">
+            This project is built independently. If it gave you clarity or
+            direction, you’re welcome to support it. ☕ & ❤️
+          </p>
         </section>
       </article>
     </main>

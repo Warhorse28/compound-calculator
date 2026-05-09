@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import styles from "./page.module.css";
 
-const siteUrl = "https://compoundwealth.com";
+const siteUrl = "https://scalemonthly.com";
 const pagePath = "/what-does-5-million-net-worth-mean-for-retirement";
 const calculatorPath = "/compound-interest-calculator";
 
 const metaTitle =
-  "What Does $5 Million Net Worth Represent in Retirement?";
+  "$5 Million for Retirement — Comfortable, Wealthy, or Overrated?";
 const pageTitle =
-  "What Does $5 Million Net Worth Represent in Retirement?";
+  "$5 Million for Retirement — Comfortable, Wealthy, or Overrated?";
+
 const pageDescription =
-  "Understand what a $5 million net worth can support in retirement, including income potential, lifestyle flexibility, and long-term financial stability.";
+  "Understand what a $5 million net worth can realistically support in retirement, including income potential, lifestyle flexibility, withdrawal rates, long-term safety, and wealth preservation.";
 
 export const metadata: Metadata = {
   title: metaTitle,
@@ -26,88 +26,124 @@ const rows = [
     rate: "3%",
     yearlyIncome: "$150,000",
     monthlyIncome: "$12,500",
-    view: "Very conservative with strong long-term stability.",
+    view:
+      "Very conservative income with strong long-term durability and a wide safety margin.",
   },
   {
     rate: "4%",
     yearlyIncome: "$200,000",
     monthlyIncome: "$16,667",
-    view: "Balanced approach with high flexibility.",
+    view:
+      "Balanced high-income retirement with strong flexibility and meaningful lifestyle freedom.",
   },
   {
     rate: "5%",
     yearlyIncome: "$250,000",
     monthlyIncome: "$20,833",
-    view: "Higher income, but requires active management.",
+    view:
+      "Higher income potential, but more pressure on the portfolio and spending discipline.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Is $5 million enough to retire comfortably?",
+    answer:
+      "Yes, in most cases. $5 million can support a very comfortable or high-end retirement, especially with controlled fixed costs, a realistic withdrawal rate, and a diversified portfolio.",
+  },
+  {
+    question: "How much monthly income can $5 million generate?",
+    answer:
+      "At a 4% withdrawal rate, $5 million may generate about $200,000 per year, or roughly $16,667 per month before taxes. A 3% strategy would be more conservative, while 5% would create more income but more risk.",
+  },
+  {
+    question: "Is $5 million considered wealthy in retirement?",
+    answer:
+      "For most retirees, yes. But whether it feels truly wealthy depends on lifestyle, location, taxes, healthcare costs, family support, and how aggressively the portfolio is used.",
+  },
+  {
+    question: "Can $5 million support early retirement?",
+    answer:
+      "It can, but early retirement still requires careful planning because the portfolio may need to last longer. Lower withdrawal rates, flexible spending, and strong risk control become more important.",
   },
 ];
 
 export default function Page() {
   return (
-    <main className={styles.page}>
-      <article className={styles.article}>
-        <header className={styles.hero}>
-          <div className={styles.eyebrow}>Retirement meaning</div>
+    <main className="cw-page">
+      <article className="cw-shell">
+        <header className="cw-hero">
+          <div className="cw-eyebrow">Retirement interpretation</div>
 
-          <h1 className={styles.title}>{pageTitle}</h1>
+          <h1 className="cw-title">{pageTitle}</h1>
 
-          <p className={styles.lead}>
-            A $5 million net worth places retirement in a completely different
-            category. At this level, the focus shifts from covering expenses to
-            managing wealth with flexibility and control.
+          <p className="cw-lead">
+            A $5 million net worth can place retirement in a completely
+            different category. At this level, the question is no longer only
+            whether you can retire. It is how much freedom, control, and
+            durability the money can realistically create.
           </p>
 
-          <p className={styles.intro}>
-            Unlike lower portfolio levels, $5 million provides a meaningful
-            margin of safety. It allows for higher income, more resilience
-            against market fluctuations, and greater freedom in lifestyle
-            choices.
+          <p className="cw-intro">
+            For many households, $5 million can support a high-quality
+            retirement with strong housing flexibility, frequent travel, better
+            healthcare options, and a wide margin for unexpected costs.
           </p>
 
-          <p className={styles.intro}>
-            However, the real meaning of this number still depends on how the
-            portfolio is structured and how income is withdrawn over time.
+          <p className="cw-intro">
+            But $5 million is not automatically unlimited wealth. A high-cost
+            lifestyle, aggressive withdrawals, poor market timing, taxes, and
+            long retirement timelines can still create pressure if the plan is
+            not managed carefully.
           </p>
 
-          <div className={styles.highlight}>
-            <p className={styles.highlightText}>
-              <strong>Key insight:</strong> $5 million usually supports a highly
-              flexible and comfortable retirement, but long-term success still
-              depends on strategy and discipline.
+          <p className="cw-intro">
+            Wealth changes the problem. It does not remove the need for
+            judgment.
+          </p>
+
+          <div className="cw-highlight">
+            <p className="cw-highlight-text">
+              <strong>Key insight:</strong> $5 million usually supports a
+              highly flexible retirement, but the real power is not just income.
+              It is the ability to protect lifestyle, reduce pressure, and stay
+              resilient over decades.
             </p>
           </div>
 
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
+          <div className="cw-hero-actions">
+            <Link href={calculatorPath} className="cw-button">
               Test Your Retirement Income →
             </Link>
           </div>
         </header>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Income potential from a $5 million portfolio
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            What $5 million can realistically generate
           </h2>
 
-          <p className={styles.paragraph}>
-            The best way to understand what $5 million means is to convert it
-            into potential income using different withdrawal strategies:
+          <p className="cw-paragraph">
+            The simplest way to understand $5 million in retirement is to
+            convert it into income. The portfolio balance sounds impressive, but
+            the income it can support is what shapes real life.
           </p>
 
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
+          <div className="cw-table-wrap">
+            <table className="cw-table">
               <thead>
                 <tr>
                   <th>Withdrawal rate</th>
                   <th>Yearly income</th>
                   <th>Monthly income</th>
-                  <th>What it means</th>
+                  <th>What it usually means</th>
                 </tr>
               </thead>
+
               <tbody>
                 {rows.map((row) => (
                   <tr key={row.rate}>
-                    <td className={styles.tableCellStrong}>{row.rate}</td>
+                    <td>{row.rate}</td>
                     <td>{row.yearlyIncome}</td>
                     <td>{row.monthlyIncome}</td>
                     <td>{row.view}</td>
@@ -117,152 +153,231 @@ export default function Page() {
             </table>
           </div>
 
-          <p className={styles.paragraph}>
-            At a 4% withdrawal rate, $5 million produces about $200,000 per year
-            — roughly $16,600 per month before taxes.
+          <p className="cw-paragraph">
+            At a 4% withdrawal rate, $5 million may generate about $200,000 per
+            year, or roughly $16,667 per month before taxes.
           </p>
 
-          <p className={styles.paragraph}>
-            This level of income provides strong flexibility in most retirement
-            scenarios and supports a wide range of lifestyle choices.
+          <p className="cw-paragraph">
+            That level of income can support a premium retirement in many parts
+            of the country. It can create room for better housing, frequent
+            travel, healthcare flexibility, family support, and a stronger
+            long-term cushion.
+          </p>
+
+          <p className="cw-paragraph">
+            Net worth is not the goal. What it produces is.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
             What kind of lifestyle does $5 million support?
           </h2>
 
-          <p className={styles.paragraph}>
-            At this level, retirement is no longer defined by constraints. It is
-            defined by options.
+          <p className="cw-paragraph">
+            At $5 million, retirement often moves beyond basic comfort. The
+            portfolio can support choices that lower-net-worth retirees may need
+            to trade off against each other.
           </p>
 
-          <ul className={styles.list}>
-            <li>High-quality housing with location flexibility</li>
-            <li>Frequent travel and discretionary spending</li>
-            <li>Access to premium healthcare and services</li>
-            <li>Ability to support family or legacy planning</li>
+          <ul className="cw-list">
+            <li>high-quality housing with meaningful location flexibility.</li>
+            <li>frequent travel without constant budget pressure.</li>
+            <li>more room for premium healthcare and services.</li>
+            <li>stronger ability to support family or legacy goals.</li>
+            <li>better cushion against inflation, repairs, and expensive years.</li>
           </ul>
 
-          <p className={styles.paragraph}>
-            In many regions, this level of wealth moves into what most people
-            consider a high-end or even wealthy retirement lifestyle.
+          <p className="cw-paragraph">
+            This is where retirement can start feeling preference-based instead
+            of limit-based. You may still make financial decisions carefully, but
+            fewer choices feel forced.
+          </p>
+
+          <p className="cw-paragraph">
+            The money gives options. The plan decides how durable those options
+            are.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Why $5 million changes the game
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Why $5 million changes the retirement equation
           </h2>
 
-          <p className={styles.paragraph}>
-            The difference between $2 million and $5 million is not just income —
-            it is resilience.
+          <p className="cw-paragraph">
+            The difference between $2 million and $5 million is not just a
+            higher income number. It is a much wider margin for error. That
+            margin can change how retirement feels during bad markets, expensive
+            healthcare years, and periods of high inflation.
           </p>
 
-          <ul className={styles.list}>
-            <li>More protection against market downturns</li>
-            <li>Greater flexibility in withdrawal strategies</li>
-            <li>Lower relative stress from unexpected expenses</li>
+          <ul className="cw-list">
+            <li>more ability to use conservative withdrawal rates.</li>
+            <li>less pressure to chase high returns.</li>
+            <li>more room to absorb market downturns.</li>
+            <li>greater flexibility if spending rises unexpectedly.</li>
+            <li>stronger potential for legacy and long-term preservation.</li>
           </ul>
 
-          <p className={styles.paragraph}>
-            This creates a retirement structure that is not only comfortable, but
-            also more durable over long time horizons.
+          <p className="cw-paragraph">
+            This matters because retirement is not only tested during normal
+            years. It is tested when markets fall, costs rise, health changes,
+            or family needs become more expensive.
+          </p>
+
+          <p className="cw-paragraph">
+            A bigger portfolio feels strongest when life gets less predictable.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            The real meaning behind $5 million
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Where $5 million can still feel less unlimited than expected
           </h2>
 
-          <p className={styles.paragraph}>
-            A $5 million net worth represents a transition from financial
-            security to financial flexibility.
+          <p className="cw-paragraph">
+            A $5 million net worth is powerful, but it can still be stretched by
+            very high fixed costs, luxury housing, private healthcare, family
+            support, taxes, and aggressive lifestyle inflation.
           </p>
 
-          <p className={styles.paragraph}>
-            It allows you to design your retirement instead of simply adapting to
-            constraints.
+          <p className="cw-paragraph">
+            This is especially true if the retirement plan assumes high spending
+            every year with little flexibility. A high income target can make
+            even a large portfolio work harder than it should.
           </p>
 
-          <p className={styles.paragraph}>
-            But even at this level, long-term success still depends on how
-            income is managed and how the portfolio is structured.
+          <p className="cw-paragraph">
+            The number looks rich. The withdrawal pressure tells the real story.
+          </p>
+
+          <p className="cw-paragraph">
+            That is why $5 million should be treated as a serious wealth base,
+            not as permission to ignore risk. The goal is not only to spend
+            well. It is to stay free.
           </p>
         </section>
 
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
-              Turn your net worth into real income
+        <section className="cw-section">
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
+              Turn your net worth into real retirement income
             </h2>
-            <p className={styles.ctaText}>
-              Use the calculator to see how different withdrawal strategies
-              impact your long-term financial stability.
+
+            <p className="cw-cta-text">
+              Use the calculator to test withdrawal rates, portfolio size, and
+              monthly income targets so you can see what your wealth may
+              realistically support.
             </p>
-            <Link href={calculatorPath} className={styles.ctaButton}>
-              Use the Calculator →
-            </Link>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Use the Calculator →
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Explore related pages</h2>
-          <ul className={styles.list}>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Explore related retirement pages
+          </h2>
+
+          <ul className="cw-list">
+            <li>
+              <Link href="/what-does-1-million-net-worth-mean-for-retirement">
+                what $1 million net worth means for retirement.
+              </Link>
+            </li>
             <li>
               <Link href="/what-does-2-million-net-worth-mean-for-retirement">
-                What does $2 million mean for retirement?
+                what $2 million net worth means for retirement.
               </Link>
             </li>
             <li>
               <Link href="/how-much-income-can-5-million-generate">
-                How much income can $5 million generate?
+                how much income $5 million can generate.
               </Link>
             </li>
             <li>
-              <Link href="/is-5-million-enough-to-retire">
-                Is $5 million enough to retire?
+              <Link href="/3-million-vs-5-million-retirement">
+                $3 million vs $5 million retirement.
               </Link>
             </li>
             <li>
-              <Link href="/what-net-worth-generates-20000-a-month">
-                What net worth generates $20,000/month?
+              <Link href="/5-million-vs-10-million-retirement">
+                $5 million vs $10 million retirement.
               </Link>
             </li>
             <li>
               <Link href={calculatorPath}>
-                Calculate your retirement income
+                compound interest calculator.
               </Link>
             </li>
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Final takeaway</h2>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            FAQ: what people usually ask next
+          </h2>
 
-          <p className={styles.paragraph}>
-            A $5 million net worth supports a highly flexible and comfortable
-            retirement in most scenarios.
-          </p>
-
-          <p className={styles.paragraph}>
-            At a balanced withdrawal rate, it generates strong income with
-            meaningful long-term stability.
-          </p>
-
-          <p className={styles.paragraph}>
-            The real advantage is not just the income level, but the control and
-            resilience it provides over time.
-          </p>
-
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
-              Run Your Numbers →
-            </Link>
+          <div className="cw-faq-list">
+            {faqItems.map((item) => (
+              <div key={item.question} className="cw-faq-item">
+                <h3 className="cw-faq-question">{item.question}</h3>
+                <p className="cw-faq-answer">{item.answer}</p>
+              </div>
+            ))}
           </div>
+        </section>
+
+        <section className="cw-section">
+          <h2 className="cw-section-title">Final perspective</h2>
+
+          <p className="cw-paragraph">
+            A $5 million net worth can support a highly flexible, comfortable,
+            and resilient retirement in most scenarios. It can create strong
+            income, more lifestyle freedom, and a much wider cushion than lower
+            portfolio levels.
+          </p>
+
+          <p className="cw-paragraph">
+            But the real advantage is not just the income. It is the control.
+            $5 million can give you more ability to choose where to live, how to
+            spend, how conservative to be, and how much risk you want to carry.
+          </p>
+
+          <p className="cw-paragraph">
+            The smartest way to think about $5 million is not as unlimited
+            money, but as a powerful financial engine. Used well, it can make
+            retirement feel less fragile, more flexible, and far more fully
+            owned.
+          </p>
+
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
+              Want to test your own retirement number?
+            </h2>
+
+            <p className="cw-cta-text">
+              Estimate how your portfolio, withdrawal rate, and income target
+              could translate into monthly retirement income.
+            </p>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Run Your Numbers →
+              </Link>
+            </div>
+          </div>
+
+          <p className="cw-support-note">
+            This project is built independently. If it gave you clarity or
+            direction, you’re welcome to support it. ☕ & ❤️
+          </p>
         </section>
       </article>
     </main>

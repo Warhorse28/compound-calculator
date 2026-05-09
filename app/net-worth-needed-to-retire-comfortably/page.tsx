@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import styles from "./page.module.css";
 
-const siteUrl = "https://compoundwealth.com";
+const siteUrl = "https://scalemonthly.com";
 const pagePath = "/net-worth-needed-to-retire-comfortably";
 const calculatorPath = "/compound-interest-calculator";
 
 const metaTitle =
-  "What Net Worth Do You Need to Retire Comfortably?";
+  "Net Worth Needed to Retire Comfortably — What Enough Really Means";
 const pageTitle =
-  "What Net Worth Do You Need to Retire Comfortably? A More Realistic Breakdown";
+  "Net Worth Needed to Retire Comfortably — What Enough Really Means";
+
 const pageDescription =
-  "See how much net worth you may need to retire comfortably based on monthly income goals, withdrawal rates, and long-term sustainability.";
+  "See how much net worth you may need to retire comfortably based on monthly income goals, withdrawal rates, lifestyle expectations, and long-term retirement safety.";
 
 export const metadata: Metadata = {
   title: metaTitle,
@@ -27,260 +27,390 @@ const rows = [
     at3: "$1.60M",
     at4: "$1.20M",
     at5: "$960K",
+    view: "Modest comfort if housing and healthcare are controlled.",
   },
   {
     income: "$6,000/month",
     at3: "$2.40M",
     at4: "$1.80M",
     at5: "$1.44M",
+    view: "A stronger comfort zone with more room for normal life costs.",
   },
   {
     income: "$8,000/month",
     at3: "$3.20M",
     at4: "$2.40M",
     at5: "$1.92M",
+    view: "A flexible retirement target for many households.",
   },
   {
     income: "$10,000/month",
     at3: "$4.00M",
     at4: "$3.00M",
     at5: "$2.40M",
+    view: "A high-comfort target with stronger lifestyle freedom.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "How much net worth do you need to retire comfortably?",
+    answer:
+      "A comfortable retirement often requires enough net worth to support monthly income beyond basic expenses. For many households, that may mean $1.8 million to $3 million or more, depending on spending, housing, healthcare, taxes, and withdrawal rate.",
+  },
+  {
+    question: "Is $1 million enough to retire comfortably?",
+    answer:
+      "$1 million can support retirement in some cases, especially with low fixed costs and modest spending. But for many retirees, it may feel more like a basic foundation than a fully comfortable retirement plan.",
+  },
+  {
+    question: "What monthly income is considered comfortable in retirement?",
+    answer:
+      "A comfortable retirement income varies by location and lifestyle, but many households begin to feel more flexibility around $6,000 to $8,000 per month before taxes. Higher-cost areas or more active lifestyles may require more.",
+  },
+  {
+    question: "Why does withdrawal rate change the net worth needed so much?",
+    answer:
+      "The withdrawal rate determines how much income each dollar of portfolio value is expected to produce. A lower rate like 3% requires more net worth but gives more safety. A higher rate like 5% requires less net worth but adds more long-term risk.",
   },
 ];
 
 export default function Page() {
   return (
-    <main className={styles.page}>
-      <article className={styles.article}>
-        <header className={styles.hero}>
-          <div className={styles.eyebrow}>Comfortable retirement</div>
+    <main className="cw-page">
+      <article className="cw-shell">
+        <header className="cw-hero">
+          <div className="cw-eyebrow">Comfortable retirement</div>
 
-          <h1 className={styles.title}>{pageTitle}</h1>
+          <h1 className="cw-title">{pageTitle}</h1>
 
-          <p className={styles.lead}>
-            Comfortable retirement is not about luxury. It is about having enough
-            income to live with stability, flexibility, and far less stress.
+          <p className="cw-lead">
+            Comfortable retirement is not just about leaving work. It is about
+            having enough income, flexibility, and margin that your plan does
+            not feel fragile every time life gets expensive.
           </p>
 
-          <p className={styles.intro}>
-            For some people, a comfortable retirement means covering essentials
-            without pressure. For others, it means having room for travel,
-            hobbies, healthcare, family support, and a buffer against surprises.
+          <p className="cw-intro">
+            For one person, comfort means covering housing, food, healthcare,
+            and basic bills without stress. For another, it means travel,
+            hobbies, family support, better healthcare options, and enough room
+            to handle surprises without panic.
           </p>
 
-          <p className={styles.intro}>
-            That is why there is no single retirement number. The real target
-            depends on the lifestyle you want, the withdrawal strategy you use,
-            and how much margin you want built into the plan.
+          <p className="cw-intro">
+            That is why there is no single perfect number. The net worth needed
+            to retire comfortably depends on your monthly income target, your
+            withdrawal rate, your fixed costs, and how much uncertainty you want
+            your portfolio to absorb.
           </p>
 
-          <div className={styles.highlight}>
-            <p className={styles.highlightText}>
-              <strong>Key insight:</strong> comfortable retirement usually
-              requires more than just “enough to survive” — it requires enough
-              net worth to absorb inflation, volatility, and changing expenses
-              over time.
+          <p className="cw-intro">
+            The minimum gets you retired. The margin helps you stay retired.
+          </p>
+
+          <div className="cw-highlight">
+            <p className="cw-highlight-text">
+              <strong>Key insight:</strong> a comfortable retirement usually
+              requires more than enough to survive. It requires enough net worth
+              to support real life: inflation, healthcare, market downturns,
+              repairs, travel, and changing priorities over time.
             </p>
           </div>
 
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
+          <div className="cw-hero-actions">
+            <Link href={calculatorPath} className="cw-button">
               Find Your Comfortable Retirement Number →
             </Link>
           </div>
         </header>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Comfortable retirement net worth scenarios
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Comfort starts when the numbers have room to breathe
           </h2>
 
-          <p className={styles.paragraph}>
-            A comfortable retirement income often falls somewhere between basic
-            financial security and a more premium lifestyle. That usually means
-            aiming for a portfolio that can support consistent spending without
-            constant fear of market swings.
+          <p className="cw-paragraph">
+            A comfortable retirement income often sits between basic security
+            and a high-end lifestyle. It is not necessarily luxury. It is the
+            ability to cover normal life without feeling like every unexpected
+            bill threatens the plan.
           </p>
 
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
+          <p className="cw-paragraph">
+            The table below compares different monthly income targets using 3%,
+            4%, and 5% withdrawal strategies. The lower the withdrawal rate, the
+            more net worth you need — but the more safety the plan usually has.
+          </p>
+
+          <div className="cw-table-wrap">
+            <table className="cw-table">
               <thead>
                 <tr>
                   <th>Monthly income</th>
                   <th>3% strategy</th>
                   <th>4% strategy</th>
                   <th>5% strategy</th>
+                  <th>What it usually means</th>
                 </tr>
               </thead>
+
               <tbody>
                 {rows.map((row) => (
                   <tr key={row.income}>
-                    <td className={styles.tableCellStrong}>{row.income}</td>
+                    <td>{row.income}</td>
                     <td>{row.at3}</td>
                     <td>{row.at4}</td>
                     <td>{row.at5}</td>
+                    <td>{row.view}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <p className={styles.paragraph}>
-            For many households, a comfortable retirement often starts around the
-            $6,000 to $8,000 per month range. But the net worth required changes
-            dramatically depending on whether you want maximum safety or a more
-            aggressive withdrawal plan.
+          <p className="cw-paragraph">
+            For many households, a comfortable retirement starts to feel more
+            realistic around the $6,000 to $8,000 per month range before taxes.
+            At a 4% withdrawal rate, that points to roughly $1.8 million to
+            $2.4 million in portfolio value.
           </p>
 
-          <p className={styles.paragraph}>
-            Even a one-point shift in withdrawal rate can change your target by
-            hundreds of thousands of dollars.
+          <p className="cw-paragraph">
+            But the estimate is useful. It is not a guarantee.
+          </p>
+
+          <p className="cw-paragraph">
+            A one-point change in withdrawal rate can change the target by
+            hundreds of thousands of dollars. That is why the same lifestyle can
+            require very different net worth depending on how conservative you
+            want the plan to be.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            What “comfortable” really means in retirement
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            What comfortable really means once work income stops
           </h2>
 
-          <p className={styles.paragraph}>
-            Comfortable does not mean the same thing for everyone. But in most
-            cases, it means your retirement income can cover needs, absorb normal
-            surprises, and still leave room for enjoyment.
+          <p className="cw-paragraph">
+            Comfortable does not mean careless. It means the retirement plan has
+            enough structure and enough cushion that daily life can continue
+            without constant financial tension.
           </p>
 
-          <ul className={styles.list}>
-            <li>Housing and core bills feel manageable</li>
-            <li>Healthcare costs do not create immediate stress</li>
-            <li>Travel or leisure spending is still possible</li>
-            <li>You have room for flexibility when life changes</li>
+          <ul className="cw-list">
+            <li>housing and core bills feel manageable.</li>
+            <li>healthcare costs do not create immediate stress.</li>
+            <li>travel or leisure spending remains realistic.</li>
+            <li>unexpected expenses do not force major lifestyle cuts.</li>
+            <li>the plan has room to adjust when life changes.</li>
           </ul>
 
-          <p className={styles.paragraph}>
-            That is why comfortable retirement usually sits well above the bare
-            minimum. It is not about excess. It is about resilience and peace of
-            mind.
+          <p className="cw-paragraph">
+            This is why comfortable retirement usually sits above the bare
+            minimum. A plan can be mathematically possible and still feel tight
+            in real life.
+          </p>
+
+          <p className="cw-paragraph">
+            The math can say yes while the lifestyle says maybe.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Why a comfortable plan needs more than a minimum number
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            The hidden risk is building a plan with no margin
           </h2>
 
-          <p className={styles.paragraph}>
-            A retirement plan built around the bare minimum can break more
-            easily. Inflation rises, markets fall, and spending changes over
-            time. A thin plan often leaves no room to adapt.
+          <p className="cw-paragraph">
+            A retirement plan built around the smallest possible number can
+            break more easily. Inflation rises. Markets fall. Healthcare gets
+            more expensive. Home repairs happen at the wrong time. Family needs
+            change.
           </p>
 
-          <p className={styles.paragraph}>
-            A more comfortable target gives you breathing room. It reduces the
-            odds that one bad market cycle or one unexpected expense forces major
-            lifestyle cuts.
+          <p className="cw-paragraph">
+            A more comfortable target gives the plan breathing room. It reduces
+            the chance that one bad market cycle, one expensive year, or one
+            wrong assumption forces you to cut the lifestyle you built the plan
+            around.
           </p>
 
-          <p className={styles.paragraph}>
-            In practice, comfort usually comes from margin — not just from
-            hitting a single headline number.
+          <p className="cw-paragraph">
+            Comfort usually comes from margin, not from hitting a headline
+            number.
+          </p>
+
+          <p className="cw-paragraph">
+            That margin matters more over time because retirement is not a
+            one-year calculation. It may need to work for 20, 30, or even 40
+            years.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            A realistic way to think about your retirement target
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Low-cost comfort and high-cost comfort are not the same
           </h2>
 
-          <p className={styles.paragraph}>
+          <p className="cw-paragraph">
+            Two people can both want a comfortable retirement and need very
+            different amounts of net worth. Location, housing, taxes,
+            healthcare, debt, travel, and family support can change the target
+            dramatically.
+          </p>
+
+          <p className="cw-paragraph">
+            A $6,000 monthly income may feel strong in a lower-cost area with a
+            paid-off home. The same income may feel tight in a high-cost city
+            with rent, medical premiums, and frequent travel.
+          </p>
+
+          <p className="cw-paragraph">
+            The number is only meaningful when it is attached to a lifestyle.
+          </p>
+        </section>
+
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            A better question than “what is the minimum?”
+          </h2>
+
+          <p className="cw-paragraph">
             Instead of asking, “What is the minimum I can retire with?” a better
             question is, “What portfolio gives me a retirement I can actually
             enjoy and sustain?”
           </p>
 
-          <p className={styles.paragraph}>
-            That shift matters. It pushes you away from fragile assumptions and
-            toward a plan that works in real life, not just on paper.
+          <p className="cw-paragraph">
+            That shift matters. It moves the plan away from fragile assumptions
+            and toward a retirement that can survive real life. The goal is not
+            only to quit working. The goal is to avoid spending the next decades
+            wondering whether the number was too low.
           </p>
 
-          <p className={styles.paragraph}>
-            Many retirees would rather build a slightly larger portfolio than
-            spend decades worrying whether their original number was too low.
+          <p className="cw-paragraph">
+            Retiring comfortably is not about being rich. It is about reducing
+            the number of financial decisions that feel forced.
           </p>
         </section>
 
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
+        <section className="cw-section">
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
               Model your comfortable retirement target
             </h2>
-            <p className={styles.ctaText}>
-              Test different monthly income goals, return assumptions, and
-              withdrawal strategies to see what kind of retirement your net worth
-              can realistically support.
+
+            <p className="cw-cta-text">
+              Use the calculator to test monthly income goals, withdrawal rates,
+              portfolio size, and return assumptions so you can see what kind of
+              retirement your net worth may realistically support.
             </p>
-            <Link href={calculatorPath} className={styles.ctaButton}>
-              Use the Calculator →
-            </Link>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Use the Calculator →
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Explore related scenarios</h2>
-          <ul className={styles.list}>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Explore related retirement scenarios
+          </h2>
+
+          <ul className="cw-list">
             <li>
               <Link href="/net-worth-needed-for-early-retirement">
-                How much you need for early retirement
+                net worth needed for early retirement.
               </Link>
             </li>
             <li>
               <Link href="/net-worth-needed-to-retire-rich">
-                Net worth needed to retire rich
+                net worth needed to retire rich.
+              </Link>
+            </li>
+            <li>
+              <Link href="/net-worth-needed-to-retire-with-8000-a-month">
+                net worth needed to retire with $8,000 a month.
+              </Link>
+            </li>
+            <li>
+              <Link href="/is-10000-a-month-enough-to-retire">
+                is $10,000 a month enough to retire?
               </Link>
             </li>
             <li>
               <Link href="/safe-withdrawal-rate-for-retirement">
-                Safe withdrawal strategies explained
-              </Link>
-            </li>
-            <li>
-              <Link href="/how-much-income-can-your-net-worth-generate">
-                How much income your net worth can generate
+                safe withdrawal rate for retirement.
               </Link>
             </li>
             <li>
               <Link href={calculatorPath}>
-                Calculate your retirement income potential
+                compound interest calculator.
               </Link>
             </li>
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Final takeaway</h2>
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            FAQ: what people usually ask next
+          </h2>
 
-          <p className={styles.paragraph}>
-            Retiring comfortably usually means aiming above the minimum. You are
-            not just buying income — you are buying flexibility, resilience, and
-            a more stable future.
-          </p>
-
-          <p className={styles.paragraph}>
-            For many people, comfort starts when the portfolio can support both
-            core living costs and a realistic margin for inflation, healthcare,
-            and changing priorities.
-          </p>
-
-          <p className={styles.paragraph}>
-            The right number is the one that gives you confidence your
-            retirement can keep working long after the excitement of leaving work
-            wears off.
-          </p>
-
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
-              Run Your Numbers →
-            </Link>
+          <div className="cw-faq-list">
+            {faqItems.map((item) => (
+              <div key={item.question} className="cw-faq-item">
+                <h3 className="cw-faq-question">{item.question}</h3>
+                <p className="cw-faq-answer">{item.answer}</p>
+              </div>
+            ))}
           </div>
+        </section>
+
+        <section className="cw-section">
+          <h2 className="cw-section-title">Final perspective</h2>
+
+          <p className="cw-paragraph">
+            Retiring comfortably usually means aiming above the minimum. You are
+            not just buying income. You are buying flexibility, resilience, and
+            a plan that can keep working after life becomes less predictable.
+          </p>
+
+          <p className="cw-paragraph">
+            For many people, comfort begins when the portfolio can support core
+            living costs and still leave room for inflation, healthcare, market
+            stress, and changing priorities.
+          </p>
+
+          <p className="cw-paragraph">
+            The right number is not the smallest number that lets you retire. It
+            is the number that lets retirement feel stable after the excitement
+            of leaving work wears off.
+          </p>
+
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
+              Want to find your comfortable number?
+            </h2>
+
+            <p className="cw-cta-text">
+              Estimate how your savings, timeline, and withdrawal assumptions
+              could translate into monthly retirement income.
+            </p>
+
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Run Your Numbers →
+              </Link>
+            </div>
+          </div>
+
+          <p className="cw-support-note">
+            This project is built independently. If it gave you clarity or
+            direction, you’re welcome to support it. ☕ & ❤️
+          </p>
         </section>
       </article>
     </main>

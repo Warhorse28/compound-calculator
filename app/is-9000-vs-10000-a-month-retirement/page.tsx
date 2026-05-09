@@ -1,55 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import styles from "./page.module.css";
 
-const siteUrl = "https://yoursite.com";
+const siteUrl = "https://scalemonthly.com";
 const pagePath = "/is-9000-vs-10000-a-month-retirement";
 const calculatorPath = "/compound-interest-calculator";
 
 const metaTitle =
-  "$9,000 vs $10,000 a Month in Retirement: Is the Difference Noticeable?";
+  "$9,000 vs $10,000 a Month in Retirement — Is the Difference Noticeable?";
 const pageTitle =
-  "$9,000 vs $10,000 a Month in Retirement: Is the Difference Noticeable?";
-const pageDescription =
-  "Compare retiring on $9,000 vs $10,000 a month. See how housing, healthcare, travel, and financial flexibility change between these retirement income levels.";
+  "$9,000 vs $10,000 a Month in Retirement — Is the Difference Noticeable?";
 
-const comparisonRows = [
-  {
-    category: "Lifestyle feel",
-    nineK:
-      "$9,000 a month already supports a very comfortable retirement in many situations, with strong flexibility and relatively low financial pressure.",
-    tenK:
-      "$10,000 a month often feels just a bit easier, with more room for day-to-day comfort and fewer small tradeoffs across the budget.",
-  },
-  {
-    category: "Housing flexibility",
-    nineK:
-      "Housing is often strong and comfortable, though certain locations or upgrades may still require more careful prioritization.",
-    tenK:
-      "Housing choices usually open up a little more, making it easier to absorb better locations, more space, or higher-quality living.",
-  },
-  {
-    category: "Healthcare",
-    nineK:
-      "Healthcare is generally manageable, but recurring costs or larger bills can still affect the wider plan over time.",
-    tenK:
-      "Healthcare feels slightly more secure, with a stronger cushion for premiums, out-of-pocket costs, and future uncertainty.",
-  },
-  {
-    category: "Travel",
-    nineK:
-      "Travel is realistic and often comfortable, though bigger or more frequent trips may still require planning.",
-    tenK:
-      "Travel tends to feel a bit more flexible, with more room for better accommodations or more frequent trips without pressure.",
-  },
-  {
-    category: "Financial margin",
-    nineK:
-      "There is already a good margin here, but inflation and unexpected costs still matter over a long retirement.",
-    tenK:
-      "That extra $1,000 a month strengthens the long-term cushion and can make retirement feel more resilient and less tight.",
-  },
-];
+const pageDescription =
+  "Compare retiring on $9,000 vs $10,000 a month. See how housing, healthcare, travel, flexibility, and financial resilience change between these retirement income levels.";
 
 export const metadata: Metadata = {
   title: metaTitle,
@@ -59,192 +21,332 @@ export const metadata: Metadata = {
   },
 };
 
+const comparisonRows = [
+  {
+    category: "Lifestyle feel",
+    nineK:
+      "$9,000 a month already supports a very comfortable retirement in many situations, with strong flexibility and relatively low financial pressure.",
+    tenK:
+      "$10,000 a month often feels a bit easier, with more room for comfort, choice, and fewer small trade-offs across the budget.",
+  },
+  {
+    category: "Housing flexibility",
+    nineK:
+      "Housing is often strong and comfortable, though certain locations, taxes, or upgrades may still require prioritization.",
+    tenK:
+      "Housing choices usually open up slightly more, making it easier to absorb better locations, more space, or higher-quality living.",
+  },
+  {
+    category: "Healthcare buffer",
+    nineK:
+      "Healthcare is generally manageable, but recurring costs or larger bills can still affect the wider plan over time.",
+    tenK:
+      "Healthcare feels more secure, with a stronger cushion for premiums, out-of-pocket costs, and future uncertainty.",
+  },
+  {
+    category: "Travel and leisure",
+    nineK:
+      "Travel is realistic and often comfortable, though bigger or more frequent trips may still require planning.",
+    tenK:
+      "Travel tends to feel more flexible, with more room for better accommodations, family visits, or more frequent trips.",
+  },
+  {
+    category: "Financial margin",
+    nineK:
+      "There is already a good margin, but inflation, repairs, taxes, and unexpected costs still matter over a long retirement.",
+    tenK:
+      "That extra $1,000 a month strengthens the cushion and can make retirement feel more resilient and less tight.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Is $10,000 a month much better than $9,000 in retirement?",
+    answer:
+      "It can be better, but the change is usually about margin rather than a completely different lifestyle. The extra $1,000 can help with healthcare, travel, inflation, repairs, taxes, and unexpected costs.",
+  },
+  {
+    question: "Can $9,000 a month already support a strong retirement?",
+    answer:
+      "Yes. $9,000 a month can support a very comfortable retirement in many areas, especially with stable housing, low debt, and realistic spending. The key is how much remains after fixed expenses.",
+  },
+  {
+    question: "What does the extra $1,000 actually change?",
+    answer:
+      "It usually reduces friction. The plan has more room to handle expensive months without forcing immediate cuts to travel, lifestyle, or savings protection.",
+  },
+  {
+    question: "Does $10,000 a month make retirement risk-free?",
+    answer:
+      "No. Taxes, healthcare, housing, inflation, market conditions, and lifestyle choices still matter. A higher monthly income helps, but it still needs a disciplined plan.",
+  },
+];
+
 export default function Page() {
   return (
-    <main className={styles.page}>
-      <article className={styles.article}>
-        <header className={styles.hero}>
-          <div className={styles.eyebrow}>Retirement income comparison</div>
-          <h1 className={styles.title}>{pageTitle}</h1>
+    <main className="cw-page">
+      <article className="cw-shell">
+        <header className="cw-hero">
+          <div className="cw-eyebrow">Retirement income comparison</div>
+          <h1 className="cw-title">{pageTitle}</h1>
 
-          <p className={styles.lead}>
+          <p className="cw-lead">
             The move from $9,000 to $10,000 a month in retirement is not a huge
-            leap on paper, but it can still make retirement feel a little more
-            flexible, stable, and relaxed.
+            leap on paper. But it can still change how much room the plan has
+            when housing, healthcare, travel, inflation, and surprise costs
+            start competing for the same dollars.
           </p>
 
-          <p className={styles.intro}>
-            At $9,000 a month, many retirees can already live very well, with
-            solid housing, manageable healthcare, and good room for travel and
-            leisure.
+          <p className="cw-intro">
+            $9,000 a month already gives many retirees a strong lifestyle. It
+            can support solid housing, manageable healthcare, travel, leisure,
+            and a comfortable day-to-day rhythm.
           </p>
 
-          <p className={styles.intro}>
-            At $10,000 a month, the difference is usually not dramatic luxury.
-            It is the extra margin that makes everyday decisions feel slightly
-            easier and long-term planning feel a little stronger.
+          <p className="cw-intro">
+            $10,000 a month does not usually create a totally different life. It
+            creates more ease inside the same life. The difference is not
+            dramatic luxury. It is less friction.
           </p>
 
-          <div className={styles.highlight}>
-            <p className={styles.highlightText}>
-              <strong>Key insight:</strong> $9,000 a month already supports a
-              strong retirement, but $10,000 a month often provides the extra
-              breathing room that makes the whole plan feel more durable and
-              comfortable.
+          <div className="cw-highlight">
+            <p className="cw-highlight-text">
+              <strong>Key insight:</strong> $9,000 a month can already feel
+              strong. $10,000 a month usually adds extra breathing room, making
+              the plan more durable, more flexible, and less exposed to
+              expensive months.
             </p>
           </div>
 
-          <div className={styles.heroActions}>
-            <Link href={calculatorPath} className={styles.primaryCta}>
+          <div className="cw-hero-actions">
+            <Link href={calculatorPath} className="cw-button">
               Calculate Your Retirement Plan →
             </Link>
           </div>
         </header>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            $9,000 vs $10,000 a month: side-by-side breakdown
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            The extra $1,000 matters most when costs rise
           </h2>
 
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
+          <p className="cw-paragraph">
+            Both income levels can support a very comfortable retirement. The
+            difference becomes more visible when ordinary life gets expensive:
+            medical bills, insurance increases, home repairs, travel, family
+            support, taxes, or inflation.
+          </p>
+
+          <p className="cw-paragraph">
+            The lifestyle may look similar. The pressure underneath may not.
+          </p>
+
+          <div className="cw-table-wrap">
+            <table className="cw-table">
               <thead>
                 <tr>
-                  <th className={styles.tableHead}>Category</th>
-                  <th className={styles.tableHead}>$9,000 a month</th>
-                  <th className={styles.tableHead}>$10,000 a month</th>
+                  <th>Category</th>
+                  <th>$9,000 a month</th>
+                  <th>$10,000 a month</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonRows.map((row) => (
                   <tr key={row.category}>
-                    <td className={styles.tableCellStrong}>{row.category}</td>
-                    <td className={styles.tableCell}>{row.nineK}</td>
-                    <td className={styles.tableCell}>{row.tenK}</td>
+                    <td>{row.category}</td>
+                    <td>{row.nineK}</td>
+                    <td>{row.tenK}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <p className={styles.paragraph}>
-            Both income levels can support a very comfortable retirement. The
-            real difference is how much extra ease and resilience the additional
-            monthly income creates over time.
+          <p className="cw-paragraph">
+            A $1,000 monthly difference becomes $12,000 per year. Over a long
+            retirement, that can help protect travel, absorb healthcare costs,
+            reduce stress from inflation, or simply make the plan feel less
+            tight.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            Where $9,000 a month already feels strong
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            Why $9,000 a month already feels strong
           </h2>
 
-          <ul className={styles.list}>
-            <li>very comfortable lifestyle in many areas</li>
-            <li>solid housing and healthcare flexibility</li>
-            <li>good room for travel and leisure</li>
-            <li>strong day-to-day financial stability</li>
+          <p className="cw-paragraph">
+            $9,000 a month is already a serious retirement income level. For
+            many households, it can create a lifestyle that feels comfortable,
+            flexible, and secure without requiring constant budget tension.
+          </p>
+
+          <ul className="cw-list">
+            <li>very comfortable lifestyle in many areas.</li>
+            <li>solid housing and healthcare flexibility.</li>
+            <li>good room for travel and leisure.</li>
+            <li>strong day-to-day financial stability.</li>
+            <li>better results when housing and debt are controlled.</li>
           </ul>
 
-          <p className={styles.paragraph}>
-            For many retirees, $9,000 a month is already enough to support a
-            retirement that feels secure, comfortable, and enjoyable.
+          <p className="cw-paragraph">
+            The risk is assuming that a strong monthly number removes the need
+            for planning. It does not. A portfolio can look strong on paper and
+            still feel fragile in real life if fixed costs are too high.
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            What the extra $1,000 a month really changes
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            What $10,000 adds without changing everything
           </h2>
 
-          <p className={styles.paragraph}>
-            The biggest change is not a completely different lifestyle. It is
-            less friction. That extra margin can make housing, healthcare,
-            inflation, and unexpected costs feel less disruptive to the overall
-            plan.
+          <p className="cw-paragraph">
+            The extra $1,000 per month often works quietly. It may not transform
+            your lifestyle, but it can reduce the number of decisions that feel
+            forced. That is a real upgrade in retirement.
           </p>
 
-          <p className={styles.paragraph}>
-            Over a long retirement, even a modest difference like this can
-            improve confidence, flexibility, and overall peace of mind.
+          <ul className="cw-list">
+            <li>more room for medical and insurance costs.</li>
+            <li>less pressure from housing or tax increases.</li>
+            <li>more flexibility for travel and family support.</li>
+            <li>stronger cushion against inflation.</li>
+            <li>less need to adjust after expensive months.</li>
+          </ul>
+
+          <p className="cw-paragraph">
+            More income today can mean less pressure tomorrow. That is where the
+            difference between $9,000 and $10,000 becomes meaningful.
           </p>
         </section>
 
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaBox}>
-            <h2 className={styles.ctaTitle}>
-              See what your retirement income could look like
+        <section className="cw-section">
+          <h2 className="cw-section-title">
+            The real difference is resilience, not status
+          </h2>
+
+          <p className="cw-paragraph">
+            At this level, the comparison is not about basic comfort. Both
+            numbers can provide that. The better question is how each income
+            level handles expensive years, higher medical costs, inflation, and
+            lifestyle choices that do not fit neatly into a monthly average.
+          </p>
+
+          <p className="cw-paragraph">
+            $9,000 may already fund the retirement. $10,000 may make it easier
+            to keep.
+          </p>
+
+          <p className="cw-paragraph">
+            That does not mean $10,000 is automatically necessary. It means the
+            extra margin can make the plan less dependent on perfect conditions.
+          </p>
+        </section>
+
+        <section className="cw-section">
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">
+              See what your retirement income could support
             </h2>
-            <p className={styles.ctaText}>
-              Use the calculator to estimate how much monthly income your
-              savings and investment assumptions could realistically generate.
+            <p className="cw-cta-text">
+              Use the calculator to test savings, return assumptions, timelines,
+              and monthly income targets before relying on a retirement number.
             </p>
-            <Link href={calculatorPath} className={styles.ctaButton}>
-              Run Your Numbers →
-            </Link>
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Run Your Numbers →
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Explore related comparisons</h2>
+        <section className="cw-section">
+          <h2 className="cw-section-title">Explore nearby retirement ranges</h2>
 
-          <ul className={styles.list}>
+          <ul className="cw-list">
             <li>
-              <Link
-                href="/is-8000-vs-9000-a-month-retirement"
-                className={styles.bottomCtaLink}
-              >
-                $8,000 vs $9,000 comparison
+              <Link href="/is-9000-a-month-enough-to-retire">
+                is $9,000 a month enough to retire.
               </Link>
             </li>
             <li>
-              <Link
-                href="/is-10000-vs-12000-a-month-retirement"
-                className={styles.bottomCtaLink}
-              >
-                $10,000 vs $12,000 comparison
+              <Link href="/is-10000-a-month-enough-to-retire">
+                is $10,000 a month enough to retire.
               </Link>
             </li>
             <li>
-              <Link
-                href="/is-10000-a-month-enough-to-retire"
-                className={styles.bottomCtaLink}
-              >
-                Is $10,000 a month enough to retire?
+              <Link href="/is-8000-vs-9000-a-month-retirement">
+                is $8,000 vs $9,000 a month retirement.
               </Link>
             </li>
             <li>
-              <Link href={calculatorPath} className={styles.bottomCtaLink}>
-                Compound interest calculator
+              <Link href="/is-10000-vs-12000-a-month-retirement">
+                is $10,000 vs $12,000 a month retirement.
               </Link>
+            </li>
+            <li>
+              <Link href="/net-worth-needed-to-retire-with-9000-a-month">
+                net worth needed to retire with $9,000 a month.
+              </Link>
+            </li>
+            <li>
+              <Link href="/net-worth-needed-to-retire-with-10000-a-month">
+                net worth needed to retire with $10,000 a month.
+              </Link>
+            </li>
+            <li>
+              <Link href={calculatorPath}>compound interest calculator.</Link>
             </li>
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Final takeaway</h2>
+        <section className="cw-section">
+          <h2 className="cw-section-title">FAQ: questions worth asking next</h2>
 
-          <p className={styles.paragraph}>
-            $9,000 a month already supports a very strong retirement in many
-            situations. But $10,000 a month often gives you the extra margin
-            that makes retirement feel just a little easier, stronger, and more
-            resilient.
-          </p>
-
-          <p className={styles.paragraph}>
-            The smartest move is still to compare your expected income with your
-            real costs and long-term goals before locking in any retirement
-            target.
-          </p>
-
-          <div className={styles.bottomCta}>
-            <p className={styles.bottomCtaText}>
-              Want to test your own numbers?
-            </p>
-            <Link href={calculatorPath} className={styles.bottomCtaLink}>
-              Calculate now →
-            </Link>
+          <div className="cw-faq-list">
+            {faqItems.map((item) => (
+              <div key={item.question} className="cw-faq-item">
+                <h3 className="cw-faq-question">{item.question}</h3>
+                <p className="cw-faq-answer">{item.answer}</p>
+              </div>
+            ))}
           </div>
+        </section>
+
+        <section className="cw-section">
+          <h2 className="cw-section-title">Final takeaway</h2>
+
+          <p className="cw-paragraph">
+            $9,000 a month already supports a very strong retirement in many
+            situations. But $10,000 a month can add the extra margin that makes
+            retirement feel easier, more flexible, and more resilient during
+            expensive years.
+          </p>
+
+          <p className="cw-paragraph">
+            The smartest move is not to assume the higher number automatically
+            solves everything. It is to compare the lifestyle, the fixed costs,
+            and the risk behind each income level before choosing a target.
+          </p>
+
+          <div className="cw-cta-panel">
+            <h2 className="cw-cta-title">Want to test your own numbers?</h2>
+            <p className="cw-cta-text">
+              Use the calculator to estimate how your savings, contributions,
+              returns, and timeline could shape your future retirement income.
+            </p>
+            <div className="cw-bottom-actions">
+              <Link href={calculatorPath} className="cw-button">
+                Calculate now →
+              </Link>
+            </div>
+          </div>
+
+          <p className="cw-support-note">
+            This project is built independently. If it gave you clarity or
+            direction, you’re welcome to support it. ☕ & ❤️
+          </p>
         </section>
       </article>
     </main>
