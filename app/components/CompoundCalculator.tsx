@@ -22,7 +22,10 @@ function cleanDecimalInput(value: string) {
   let hasDot = false;
 
   for (const char of normalized) {
-    if (char >= "0" && char <= "9") result += char;
+    if (char >= "0" && char <= "9") {
+      result += char;
+      continue;
+    }
 
     if (char === "." && !hasDot) {
       result += char;
@@ -54,7 +57,6 @@ function calculateCompoundInterest({
   investmentMonths: number;
 }) {
   const monthlyRate = monthlyRatePercent / 100;
-
   let finalAmount = initialInvestment;
 
   for (let month = 0; month < investmentMonths; month++) {
@@ -65,9 +67,7 @@ function calculateCompoundInterest({
     initialInvestment + monthlyContribution * investmentMonths;
 
   const interestEarned = finalAmount - totalInvested;
-
   const years = investmentMonths / 12;
-
   const monthlyIncomeAt4Percent = (finalAmount * 0.04) / 12;
 
   const totalReturnPercent =
@@ -107,13 +107,8 @@ function getProjectionMessage(monthlyIncome: number) {
   return "This points to a high-income retirement scenario with a wide financial margin.";
 }
 
-function getGrowthLabel(
-  interestEarned: number,
-  totalInvested: number
-) {
-  if (totalInvested <= 0) {
-    return "No investment base yet.";
-  }
+function getGrowthLabel(interestEarned: number, totalInvested: number) {
+  if (totalInvested <= 0) return "No investment base yet.";
 
   const ratio = interestEarned / totalInvested;
 
@@ -134,11 +129,8 @@ export default function CompoundCalculator() {
   const initialInvestmentValue = parseDecimal(initialInvestment);
   const monthlyContributionValue = parseDecimal(monthlyContribution);
   const monthlyRateValue = parseDecimal(monthlyRate);
-
   const investmentMonthsValue =
-    investmentMonths.trim() === ""
-      ? 0
-      : Number(investmentMonths);
+    investmentMonths.trim() === "" ? 0 : Number(investmentMonths);
 
   const hasAnyInput =
     initialInvestment !== "" ||
@@ -159,13 +151,10 @@ export default function CompoundCalculator() {
     investmentMonthsValue < 0;
 
   const hasNonIntegerMonths =
-    investmentMonths !== "" &&
-    !Number.isInteger(investmentMonthsValue);
+    investmentMonths !== "" && !Number.isInteger(investmentMonthsValue);
 
   const hasUnrealisticRate = monthlyRateValue > 100;
-
-  const hasUnrealisticMonths =
-    investmentMonthsValue > 1200;
+  const hasUnrealisticMonths = investmentMonthsValue > 1200;
 
   const canCalculate =
     hasAnyInput &&
@@ -192,47 +181,42 @@ export default function CompoundCalculator() {
     investmentMonthsValue,
   ]);
 
-  const handleCalculate = () => {
-    setHasCalculated(true);
-  };
-
-  const clearFields = () => {
-    setInitialInvestment("");
-    setMonthlyContribution("");
-    setMonthlyRate("");
-    setInvestmentMonths("");
-    setHasCalculated(false);
-  };
-
-  const showResults =
-    hasCalculated && canCalculate && results;
+  const showResults = hasCalculated && canCalculate && results;
+  const showPlaceholder = !showResults;
 
   const estimatedMonthlyIncome = results
     ? results.monthlyIncomeAt4Percent
     : 0;
 
-  const projectionMessage =
-    getProjectionMessage(estimatedMonthlyIncome);
+  const projectionMessage = getProjectionMessage(estimatedMonthlyIncome);
 
   const growthLabel = results
-    ? getGrowthLabel(
-        results.interestEarned,
-        results.totalInvested
-      )
+    ? getGrowthLabel(results.interestEarned, results.totalInvested)
     : "";
+
+  function handleCalculate() {
+    setHasCalculated(true);
+  }
+
+  function clearFields() {
+    setInitialInvestment("");
+    setMonthlyContribution("");
+    setMonthlyRate("");
+    setInvestmentMonths("");
+    setHasCalculated(false);
+  }
 
   return (
     <main className={styles.page}>
       <section className={styles.shell}>
         <div className={styles.topBar}>
-          <Link href="/" className={styles.brand}>
+          <Link href="/" className={styles.brand} aria-label="ScaleMonthly home">
             <div className={styles.brandLogo}>SM</div>
 
             <div>
               <p className={styles.brandName}>
                 Scale<span>Monthly</span>
               </p>
-
               <p className={styles.brandTagline}>
                 Invest smart. Grow monthly.
               </p>
@@ -243,38 +227,30 @@ export default function CompoundCalculator() {
         <header className={styles.hero}>
           <div className={styles.heroCopy}>
             <div className={styles.badgeRow}>
-              <span className={styles.badgePrimary}>
-                ScaleMonthly Tool
-              </span>
-
+              <span className={styles.badgePrimary}>ScaleMonthly tool</span>
               <span className={styles.badgeSecondary}>
                 Built for real planning
               </span>
             </div>
 
-            <h1 className={styles.title}>
-              Compound Interest Calculator
-            </h1>
+            <h1 className={styles.title}>Compound Interest Calculator</h1>
 
             <p className={styles.lead}>
-              Project how your money could grow with
-              monthly contributions, compounding, and
-              time.
+              Project how your money could grow with monthly contributions,
+              compounding, and time.
             </p>
 
             <p className={styles.intro}>
-              This calculator helps you estimate future
-              value, growth earned, and a rough
-              retirement income projection from your
-              investment strategy.
+              This calculator helps you estimate future value, growth earned,
+              and a rough retirement income projection from your investment
+              strategy.
             </p>
 
             <div className={styles.highlight}>
               <p className={styles.highlightText}>
-                <strong>Key idea:</strong> small monthly
-                contributions can look quiet today. Over
-                enough time, compounding can do the
-                heavy lifting.
+                <strong>Key idea:</strong> small monthly contributions can look
+                quiet today. Over enough time, compounding can do the heavy
+                lifting.
               </p>
             </div>
           </div>
@@ -284,7 +260,6 @@ export default function CompoundCalculator() {
               <span className={styles.heroPanelEyebrow}>
                 What this tool shows
               </span>
-
               <h2 className={styles.heroPanelTitle}>
                 From contributions to future value
               </h2>
@@ -298,8 +273,7 @@ export default function CompoundCalculator() {
             </ul>
 
             <p className={styles.heroPanelText}>
-              The math is simple. What it could mean for
-              your future is not.
+              The math is simple. What it could mean for your future is not.
             </p>
           </aside>
         </header>
@@ -307,32 +281,22 @@ export default function CompoundCalculator() {
         <section className={styles.toolSection}>
           <div className={styles.toolHeader}>
             <div>
-              <p className={styles.toolEyebrow}>
-                Calculator inputs
-              </p>
-
-              <h2 className={styles.toolTitle}>
-                Run your projection
-              </h2>
+              <p className={styles.toolEyebrow}>Calculator inputs</p>
+              <h2 className={styles.toolTitle}>Run your projection</h2>
             </div>
 
             <p className={styles.toolText}>
-              Enter your starting amount, monthly
-              contribution, monthly return, and time
-              horizon.
+              Enter your starting amount, monthly contribution, monthly return,
+              and time horizon.
             </p>
           </div>
 
           <div className={styles.toolCard}>
             <div className={styles.form}>
               <div className={styles.field}>
-                <label
-                  htmlFor="initialInvestment"
-                  className={styles.label}
-                >
+                <label htmlFor="initialInvestment" className={styles.label}>
                   Initial investment ($)
                 </label>
-
                 <input
                   id="initialInvestment"
                   type="text"
@@ -340,22 +304,16 @@ export default function CompoundCalculator() {
                   placeholder="1000"
                   value={initialInvestment}
                   onChange={(e) =>
-                    setInitialInvestment(
-                      cleanDecimalInput(e.target.value)
-                    )
+                    setInitialInvestment(cleanDecimalInput(e.target.value))
                   }
                   className={styles.input}
                 />
               </div>
 
               <div className={styles.field}>
-                <label
-                  htmlFor="monthlyContribution"
-                  className={styles.label}
-                >
+                <label htmlFor="monthlyContribution" className={styles.label}>
                   Monthly contribution ($)
                 </label>
-
                 <input
                   id="monthlyContribution"
                   type="text"
@@ -363,22 +321,16 @@ export default function CompoundCalculator() {
                   placeholder="250"
                   value={monthlyContribution}
                   onChange={(e) =>
-                    setMonthlyContribution(
-                      cleanDecimalInput(e.target.value)
-                    )
+                    setMonthlyContribution(cleanDecimalInput(e.target.value))
                   }
                   className={styles.input}
                 />
               </div>
 
               <div className={styles.field}>
-                <label
-                  htmlFor="monthlyRate"
-                  className={styles.label}
-                >
+                <label htmlFor="monthlyRate" className={styles.label}>
                   Interest rate (% per month)
                 </label>
-
                 <input
                   id="monthlyRate"
                   type="text"
@@ -386,22 +338,16 @@ export default function CompoundCalculator() {
                   placeholder="1.0"
                   value={monthlyRate}
                   onChange={(e) =>
-                    setMonthlyRate(
-                      cleanDecimalInput(e.target.value)
-                    )
+                    setMonthlyRate(cleanDecimalInput(e.target.value))
                   }
                   className={styles.input}
                 />
               </div>
 
               <div className={styles.field}>
-                <label
-                  htmlFor="investmentMonths"
-                  className={styles.label}
-                >
+                <label htmlFor="investmentMonths" className={styles.label}>
                   Investment period (months)
                 </label>
-
                 <input
                   id="investmentMonths"
                   type="text"
@@ -409,9 +355,7 @@ export default function CompoundCalculator() {
                   placeholder="24"
                   value={investmentMonths}
                   onChange={(e) =>
-                    setInvestmentMonths(
-                      cleanIntegerInput(e.target.value)
-                    )
+                    setInvestmentMonths(cleanIntegerInput(e.target.value))
                   }
                   className={styles.input}
                 />
@@ -419,96 +363,141 @@ export default function CompoundCalculator() {
             </div>
 
             <div className={styles.actions}>
-              <button
-                onClick={handleCalculate}
-                className={styles.primaryButton}
-              >
+              <button onClick={handleCalculate} className={styles.primaryButton}>
                 Calculate projection
               </button>
 
-              <button
-                onClick={clearFields}
-                className={styles.secondaryButton}
-              >
+              <button onClick={clearFields} className={styles.secondaryButton}>
                 Reset inputs
               </button>
             </div>
+
+            <div className={styles.statusArea}>
+              {hasNegativeValues && (
+                <p className={styles.error}>
+                  Please enter only non-negative values.
+                </p>
+              )}
+
+              {hasNonIntegerMonths && (
+                <p className={styles.error}>
+                  Investment period must be a whole number of months.
+                </p>
+              )}
+
+              {hasUnrealisticRate && (
+                <p className={styles.error}>
+                  Please enter a realistic monthly rate between 0 and 100.
+                </p>
+              )}
+
+              {hasUnrealisticMonths && (
+                <p className={styles.error}>
+                  Investment period is too large. Please use 1200 months or less.
+                </p>
+              )}
+            </div>
           </div>
         </section>
+
+        {showPlaceholder && (
+          <section className={styles.resultsSection}>
+            <div className={styles.resultsHero}>
+              <div className={styles.resultsHeroHeader}>
+                <div>
+                  <p className={styles.resultsEyebrow}>Projection area</p>
+                  <h2 className={styles.resultsTitle}>
+                    Your results will appear here
+                  </h2>
+                </div>
+
+                <span className={styles.resultsBadge}>Waiting for inputs</span>
+              </div>
+
+              <p className={styles.resultsIntro}>
+                Enter your numbers and run the calculation to see projected
+                future value, total invested, estimated gains, and a simple
+                retirement-income view.
+              </p>
+            </div>
+
+            <div className={styles.infoGrid}>
+              <div className={styles.infoCard}>
+                <p className={styles.infoLabel}>Future value</p>
+                <p className={styles.infoPlaceholder}>
+                  Calculated after you run the tool.
+                </p>
+              </div>
+
+              <div className={styles.infoCard}>
+                <p className={styles.infoLabel}>Growth earned</p>
+                <p className={styles.infoPlaceholder}>
+                  Shows how much compounding added.
+                </p>
+              </div>
+
+              <div className={styles.infoCard}>
+                <p className={styles.infoLabel}>Retirement income</p>
+                <p className={styles.infoPlaceholder}>
+                  Simple monthly estimate at a 4% rate.
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
 
         {showResults && results && (
           <section className={styles.resultsSection}>
             <div className={styles.resultsHero}>
               <div className={styles.resultsHeroHeader}>
                 <div>
-                  <p className={styles.resultsEyebrow}>
-                    Your projection
-                  </p>
-
+                  <p className={styles.resultsEyebrow}>Your projection</p>
                   <h2 className={styles.resultsTitle}>
                     Here is what your numbers suggest
                   </h2>
                 </div>
 
-                <span className={styles.resultsBadge}>
-                  Estimated
-                </span>
+                <span className={styles.resultsBadge}>Estimated</span>
               </div>
 
               <div className={styles.heroValueCard}>
                 <p className={styles.heroValueLabel}>
                   Projected future value
                 </p>
-
                 <p className={styles.heroValue}>
                   {formatCurrency(results.finalAmount)}
                 </p>
-
                 <p className={styles.heroValueText}>
-                  Based on {investmentMonthsValue} months
-                  of growth and contributions.
+                  Based on {investmentMonthsValue} months of growth and
+                  contributions.
                 </p>
               </div>
             </div>
 
             <div className={styles.metricsGrid}>
               <div className={styles.metricCard}>
-                <p className={styles.metricLabel}>
-                  Total contributed
-                </p>
-
+                <p className={styles.metricLabel}>Total contributed</p>
                 <p className={styles.metricValue}>
                   {formatCurrency(results.totalInvested)}
                 </p>
               </div>
 
               <div className={styles.metricCard}>
-                <p className={styles.metricLabel}>
-                  Estimated growth earned
-                </p>
-
+                <p className={styles.metricLabel}>Estimated growth earned</p>
                 <p className={styles.metricValueStrong}>
                   {formatCurrency(results.interestEarned)}
                 </p>
               </div>
 
               <div className={styles.metricCard}>
-                <p className={styles.metricLabel}>
-                  Estimated total return
-                </p>
-
+                <p className={styles.metricLabel}>Estimated total return</p>
                 <p className={styles.metricValue}>
-                  {formatPercent(
-                    results.totalReturnPercent
-                  )}
+                  {formatPercent(results.totalReturnPercent)}
                 </p>
               </div>
 
               <div className={styles.metricCard}>
-                <p className={styles.metricLabel}>
-                  Investment timeline
-                </p>
-
+                <p className={styles.metricLabel}>Investment timeline</p>
                 <p className={styles.metricValue}>
                   {results.years.toFixed(1)} years
                 </p>
@@ -520,49 +509,29 @@ export default function CompoundCalculator() {
                 <p className={styles.incomeEyebrow}>
                   Estimated retirement income
                 </p>
-
                 <p className={styles.incomeValue}>
-                  {formatCurrency(
-                    results.monthlyIncomeAt4Percent
-                  )}{" "}
-                  / month
+                  {formatCurrency(results.monthlyIncomeAt4Percent)} / month
                 </p>
-
-                <p className={styles.incomeText}>
-                  {projectionMessage}
-                </p>
-
+                <p className={styles.incomeText}>{projectionMessage}</p>
                 <p className={styles.incomeNote}>
-                  Based on a simple 4% withdrawal
-                  estimate from your projected balance.
+                  Based on a simple 4% withdrawal estimate from your projected
+                  balance.
                 </p>
               </div>
 
               <div className={styles.interpretationCard}>
-                <p
-                  className={
-                    styles.interpretationEyebrow
-                  }
-                >
+                <p className={styles.interpretationEyebrow}>
                   What this result is saying
                 </p>
-
-                <h3
-                  className={styles.interpretationTitle}
-                >
-                  {growthLabel}
-                </h3>
-
+                <h3 className={styles.interpretationTitle}>{growthLabel}</h3>
                 <p className={styles.interpretationText}>
-                  Your ending balance is not just a
-                  headline number. It is a rough picture
-                  of what your current saving pace could
-                  build over time.
+                  Your ending balance is not just a headline number. It is a
+                  rough picture of what your current saving pace could build
+                  over time.
                 </p>
-
                 <p className={styles.interpretationText}>
-                  The balance is the engine. Income is
-                  what you eventually live on.
+                  The balance is the engine. Income is what you eventually live
+                  on.
                 </p>
               </div>
             </div>
@@ -573,9 +542,8 @@ export default function CompoundCalculator() {
               </h3>
 
               <p className={styles.linksText}>
-                Explore common retirement scenarios and
-                see how different monthly income targets
-                may actually feel in real life.
+                Explore common retirement scenarios and see how different
+                monthly income targets may actually feel in real life.
               </p>
 
               <div className={styles.linkPills}>
@@ -606,33 +574,23 @@ export default function CompoundCalculator() {
 
         <section className={styles.footerNotes}>
           <div className={styles.noteCard}>
-            <p className={styles.noteTitle}>
-              How this works
-            </p>
-
+            <p className={styles.noteTitle}>How this works</p>
             <p className={styles.noteText}>
-              This calculator assumes monthly
-              compounding and end-of-month
+              This calculator assumes monthly compounding and end-of-month
               contributions.
             </p>
-
             <p className={styles.noteText}>
-              Results are estimates for educational
-              purposes only and should not be treated as
-              financial advice.
+              Results are estimates for educational purposes only and should not
+              be treated as financial advice.
             </p>
           </div>
 
           <div className={styles.noteCard}>
-            <p className={styles.noteTitle}>
-              Why this matters
-            </p>
-
+            <p className={styles.noteTitle}>Why this matters</p>
             <p className={styles.noteText}>
-              Compounding shows how time, consistency,
-              and rate of return interact. Small monthly
-              decisions can create dramatically different
-              outcomes later.
+              Compounding shows how time, consistency, and rate of return
+              interact. Small monthly decisions can create dramatically
+              different outcomes later.
             </p>
           </div>
         </section>
